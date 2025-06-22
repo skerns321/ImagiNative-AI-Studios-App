@@ -1,0 +1,55 @@
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#000000" />
+  
+  <!-- Sustainability elements -->
+  <g>
+    <!-- Geometric earth/globe representation -->
+    <circle cx="400" cy="250" r="150" fill="#111111" stroke="#333333" stroke-width="3" />
+    
+    <!-- Grid pattern on globe -->
+    <path d="M250,250 Q400,50 550,250 Q400,450 250,250" fill="none" stroke="#333333" stroke-width="1" />
+    <path d="M250,250 Q400,150 550,250 Q400,350 250,250" fill="none" stroke="#333333" stroke-width="1" />
+    <path d="M400,100 Q250,250 400,400 Q550,250 400,100" fill="none" stroke="#333333" stroke-width="1" />
+    <path d="M400,100 Q300,250 400,400 Q500,250 400,100" fill="none" stroke="#333333" stroke-width="1" />
+    
+    <!-- Continent-like shapes -->
+    <path d="M300,170 C320,160 340,165 350,175 C370,185 380,195 375,220 C370,240 350,250 330,240 C310,230 300,220 290,200 C285,180 290,175 300,170" fill="#333333" />
+    <path d="M450,200 C460,190 480,200 490,220 C500,240 495,260 480,270 C465,275 450,270 440,255 C435,235 440,210 450,200" fill="#333333" />
+    <path d="M370,300 C380,290 400,295 420,310 C435,330 440,350 430,360 C415,370 390,365 380,345 C370,320 360,310 370,300" fill="#333333" />
+  </g>
+  
+  <!-- Sustainability symbols -->
+  <g transform="translate(400, 250) scale(0.5)">
+    <!-- Recycling symbol -->
+    <path d="M0,-120 L30,-60 L-30,-60 Z" fill="#FFC107" />
+    <path d="M103.9,60 L73.9,0 L133.9,0 Z" fill="#FFC107" transform="rotate(120 0 0)" />
+    <path d="M-103.9,-60 L-73.9,0 L-133.9,0 Z" fill="#FFC107" transform="rotate(240 0 0)" />
+    
+    <!-- Arrows -->
+    <path d="M0,-90 A90,90 0 0,1 77.9,45 L57.9,45 A70,70 0 0,0 0,-70 Z" fill="#E50914" opacity="0.7" />
+    <path d="M77.9,45 A90,90 0 0,1 -77.9,45 L-57.9,45 A70,70 0 0,0 57.9,65 Z" fill="#E50914" opacity="0.7" transform="rotate(120 0 0)" />
+    <path d="M-77.9,45 A90,90 0 0,1 0,-90 L0,-70 A70,70 0 0,0 -57.9,65 Z" fill="#E50914" opacity="0.7" transform="rotate(240 0 0)" />
+  </g>
+  
+  <!-- Decorative elements -->
+  <circle cx="150" cy="150" r="50" fill="#E50914" opacity="0.1" />
+  <circle cx="650" cy="350" r="70" fill="#FFC107" opacity="0.1" />
+  <rect x="100" y="350" width="100" height="100" rx="10" ry="10" fill="#E50914" opacity="0.05" />
+  <rect x="600" y="120" width="120" height="80" rx="10" ry="10" fill="#FFC107" opacity="0.05" />
+  
+  <!-- Title background -->
+  <rect x="200" y="420" width="400" height="50" rx="5" ry="5" fill="#111111" />
+  <text x="400" y="450" font-family="Arial" font-size="20" fill="#FFFFFF" text-anchor="middle">Building Sustainable Digital Products</text>
+  
+  <!-- Glow effect -->
+  <circle cx="400" cy="250" r="200" fill="url(#glow)" opacity="0.1" />
+  
+  <!-- Gradient definitions -->
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#FFC107" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+</svg> 

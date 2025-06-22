@@ -1,0 +1,76 @@
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#000000" />
+  
+  <!-- Technology abstract elements -->
+  <g>
+    <!-- Circuit pattern elements -->
+    <line x1="100" y1="100" x2="700" y2="100" stroke="#333333" stroke-width="3" />
+    <line x1="100" y1="100" x2="100" y2="400" stroke="#333333" stroke-width="3" />
+    <line x1="700" y1="100" x2="700" y2="400" stroke="#333333" stroke-width="3" />
+    <line x1="100" y1="400" x2="700" y2="400" stroke="#333333" stroke-width="3" />
+    
+    <line x1="200" y1="100" x2="200" y2="200" stroke="#333333" stroke-width="2" />
+    <line x1="300" y1="100" x2="300" y2="300" stroke="#333333" stroke-width="2" />
+    <line x1="400" y1="100" x2="400" y2="400" stroke="#333333" stroke-width="2" />
+    <line x1="500" y1="100" x2="500" y2="300" stroke="#333333" stroke-width="2" />
+    <line x1="600" y1="100" x2="600" y2="200" stroke="#333333" stroke-width="2" />
+    
+    <line x1="100" y1="200" x2="500" y2="200" stroke="#333333" stroke-width="2" />
+    <line x1="100" y1="300" x2="700" y2="300" stroke="#333333" stroke-width="2" />
+    
+    <!-- Circuit nodes -->
+    <circle cx="200" cy="200" r="8" fill="#E50914" />
+    <circle cx="300" cy="300" r="8" fill="#FFC107" />
+    <circle cx="400" cy="200" r="8" fill="#E50914" />
+    <circle cx="400" cy="300" r="8" fill="#FFC107" />
+    <circle cx="500" cy="200" r="8" fill="#E50914" />
+    <circle cx="500" cy="300" r="8" fill="#FFC107" />
+    <circle cx="600" cy="200" r="8" fill="#E50914" />
+  </g>
+  
+  <!-- AI Brain Representation -->
+  <g transform="translate(400, 250) scale(0.8)">
+    <ellipse cx="0" cy="0" rx="120" ry="90" fill="none" stroke="#E50914" stroke-width="3" stroke-opacity="0.7" />
+    
+    <!-- Neural network connections -->
+    <g opacity="0.7">
+      <line x1="-60" y1="-30" x2="60" y2="-30" stroke="#FFFFFF" stroke-width="1" />
+      <line x1="-60" y1="0" x2="60" y2="0" stroke="#FFFFFF" stroke-width="1" />
+      <line x1="-60" y1="30" x2="60" y2="30" stroke="#FFFFFF" stroke-width="1" />
+      
+      <line x1="-60" y1="-30" x2="0" y2="0" stroke="#FFFFFF" stroke-width="1" />
+      <line x1="-60" y1="30" x2="0" y2="0" stroke="#FFFFFF" stroke-width="1" />
+      <line x1="60" y1="-30" x2="0" y2="0" stroke="#FFFFFF" stroke-width="1" />
+      <line x1="60" y1="30" x2="0" y2="0" stroke="#FFFFFF" stroke-width="1" />
+      
+      <!-- Nodes -->
+      <circle cx="-60" cy="-30" r="6" fill="#FFC107" />
+      <circle cx="-60" cy="0" r="6" fill="#FFC107" />
+      <circle cx="-60" cy="30" r="6" fill="#FFC107" />
+      
+      <circle cx="0" cy="0" r="8" fill="#E50914" />
+      
+      <circle cx="60" cy="-30" r="6" fill="#FFC107" />
+      <circle cx="60" cy="0" r="6" fill="#FFC107" />
+      <circle cx="60" cy="30" r="6" fill="#FFC107" />
+    </g>
+  </g>
+  
+  <!-- Abstract glow effects -->
+  <circle cx="400" cy="250" r="180" fill="url(#glow)" opacity="0.1" />
+  <circle cx="200" cy="400" r="100" fill="#E50914" opacity="0.05" />
+  <circle cx="600" cy="150" r="120" fill="#FFC107" opacity="0.05" />
+  
+  <!-- Title background -->
+  <rect x="200" y="420" width="400" height="50" rx="5" ry="5" fill="#111111" />
+  <text x="400" y="450" font-family="Arial" font-size="20" fill="#FFFFFF" text-anchor="middle">The Future of AI in Design</text>
+  
+  <!-- Gradient definitions -->
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#E50914" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+</svg> 

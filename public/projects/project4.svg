@@ -1,0 +1,77 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#000000" />
+  
+  <!-- Marketing Campaign Elements -->
+  <g transform="translate(150, 100)">
+    <!-- Campaign graphical representation -->
+    <rect x="0" y="0" width="500" height="300" rx="10" ry="10" fill="#111111" stroke="#333333" stroke-width="3" />
+    
+    <!-- Marketing channels -->
+    <g transform="translate(50, 50)">
+      <!-- Social Media -->
+      <circle cx="0" cy="0" r="40" fill="#222222" stroke="#E50914" stroke-width="2" />
+      <text x="0" y="5" font-family="Arial" font-size="10" fill="#FFFFFF" text-anchor="middle">Social</text>
+      
+      <!-- Email -->
+      <circle cx="200" cy="0" r="40" fill="#222222" stroke="#E50914" stroke-width="2" />
+      <text x="200" y="5" font-family="Arial" font-size="10" fill="#FFFFFF" text-anchor="middle">Email</text>
+      
+      <!-- Website -->
+      <circle cx="400" cy="0" r="40" fill="#222222" stroke="#E50914" stroke-width="2" />
+      <text x="400" y="5" font-family="Arial" font-size="10" fill="#FFFFFF" text-anchor="middle">Website</text>
+      
+      <!-- Search -->
+      <circle cx="100" cy="150" r="40" fill="#222222" stroke="#FFC107" stroke-width="2" />
+      <text x="100" y="155" font-family="Arial" font-size="10" fill="#FFFFFF" text-anchor="middle">Search</text>
+      
+      <!-- Content -->
+      <circle cx="300" cy="150" r="40" fill="#222222" stroke="#FFC107" stroke-width="2" />
+      <text x="300" y="155" font-family="Arial" font-size="10" fill="#FFFFFF" text-anchor="middle">Content</text>
+      
+      <!-- Connection lines -->
+      <line x1="0" y1="40" x2="100" y2="110" stroke="#E50914" stroke-width="2" opacity="0.5" />
+      <line x1="200" y1="40" x2="100" y2="110" stroke="#E50914" stroke-width="2" opacity="0.5" />
+      <line x1="200" y1="40" x2="300" y2="110" stroke="#E50914" stroke-width="2" opacity="0.5" />
+      <line x1="400" y1="40" x2="300" y2="110" stroke="#E50914" stroke-width="2" opacity="0.5" />
+      
+      <!-- Central hub -->
+      <circle cx="200" cy="100" r="60" fill="#333333" opacity="0.7" />
+      <text x="200" y="95" font-family="Arial" font-size="14" fill="#FFFFFF" text-anchor="middle">Integrated</text>
+      <text x="200" y="115" font-family="Arial" font-size="14" fill="#FFFFFF" text-anchor="middle">Campaign</text>
+    </g>
+    
+    <!-- Analytics visualization -->
+    <g transform="translate(100, 250)">
+      <rect x="0" y="0" width="300" height="30" fill="#222222" />
+      <rect x="0" y="0" width="240" height="30" fill="#E50914" opacity="0.5" />
+      <text x="310" y="20" font-family="Arial" font-size="12" fill="#FFFFFF">80%</text>
+      
+      <text x="-20" y="15" font-family="Arial" font-size="10" fill="#FFFFFF" text-anchor="end">Engagement</text>
+    </g>
+  </g>
+  
+  <!-- Marketing Elements -->
+  <g opacity="0.3">
+    <!-- Hashtags and keywords -->
+    <text x="150" y="450" font-family="Arial" font-size="14" fill="#FFC107">#EcoLife</text>
+    <text x="250" y="450" font-family="Arial" font-size="14" fill="#FFFFFF">#Sustainability</text>
+    <text x="400" y="450" font-family="Arial" font-size="14" fill="#E50914">#GreenFuture</text>
+    <text x="550" y="450" font-family="Arial" font-size="14" fill="#FFFFFF">#ZeroWaste</text>
+    
+    <!-- KPIs -->
+    <text x="150" y="480" font-family="Arial" font-size="12" fill="#FFFFFF">300% Social Growth</text>
+    <text x="350" y="480" font-family="Arial" font-size="12" fill="#FFFFFF">200% Sales Increase</text>
+    <text x="550" y="480" font-family="Arial" font-size="12" fill="#FFFFFF">5M Impressions</text>
+  </g>
+  
+  <!-- Decorative elements -->
+  <circle cx="100" cy="100" r="50" fill="#E50914" opacity="0.1" />
+  <circle cx="700" cy="450" r="70" fill="#FFC107" opacity="0.1" />
+  <rect x="50" y="350" width="100" height="100" rx="10" ry="10" fill="#E50914" opacity="0.05" />
+  <rect x="650" y="200" width="120" height="80" rx="10" ry="10" fill="#FFC107" opacity="0.05" />
+  
+  <!-- Project title -->
+  <rect x="250" y="520" width="300" height="60" rx="5" ry="5" fill="#111111" />
+  <text x="400" y="560" font-family="Arial" font-size="24" fill="#FFFFFF" text-anchor="middle">Marketing Campaign</text>
+</svg> 

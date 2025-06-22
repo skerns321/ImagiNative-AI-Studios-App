@@ -1,0 +1,35 @@
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#000000" />
+  
+  <!-- Profile frame -->
+  <rect x="50" y="50" width="300" height="300" rx="150" ry="150" fill="#111111" stroke="#333333" stroke-width="2" />
+  
+  <!-- Abstract head shape -->
+  <circle cx="200" cy="160" r="70" fill="#222222" />
+  
+  <!-- Abstract body shape -->
+  <path d="M140,220 C140,280 260,280 260,220 L260,310 C260,330 140,330 140,310 Z" fill="#222222" />
+  
+  <!-- Hair highlights -->
+  <path d="M140,120 C140,100 200,80 240,100 C260,110 260,130 250,140 C230,160 210,150 190,150 C160,150 140,130 140,120 Z" fill="#333333" />
+  <path d="M240,125 C240,115 220,105 200,115 C180,125 180,145 200,155 C220,145 240,135 240,125 Z" fill="#FFC107" opacity="0.5" />
+  
+  <!-- Facial features suggestion -->
+  <ellipse cx="175" cy="150" rx="8" ry="10" fill="#000000" />
+  <ellipse cx="225" cy="150" rx="8" ry="10" fill="#000000" />
+  <path d="M180,180 C180,190 220,190 220,180" stroke="#000000" stroke-width="2" fill="none" />
+  
+  <!-- Glasses suggestion -->
+  <path d="M165,140 C155,140 155,150 165,150 C175,150 180,140 165,140 Z" stroke="#444444" stroke-width="2" fill="none" />
+  <path d="M235,140 C225,140 225,150 235,150 C245,150 250,140 235,140 Z" stroke="#444444" stroke-width="2" fill="none" />
+  <line x1="185" y1="145" x2="215" y2="145" stroke="#444444" stroke-width="2" />
+  
+  <!-- Decorative elements -->
+  <circle cx="80" cy="80" r="25" fill="#E50914" opacity="0.3" />
+  <circle cx="320" cy="320" r="30" fill="#FFC107" opacity="0.3" />
+  
+  <!-- Name label -->
+  <rect x="120" y="340" width="160" height="30" rx="15" ry="15" fill="#222222" />
+  <text x="200" y="360" font-family="Arial" font-size="14" fill="#FFFFFF" text-anchor="middle">Michael Chen</text>
+</svg> 

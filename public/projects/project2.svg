@@ -1,0 +1,65 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#000000" />
+  
+  <!-- E-commerce elements -->
+  <g transform="translate(250, 150)">
+    <!-- Desktop/mobile devices -->
+    <rect x="0" y="0" width="300" height="200" rx="5" ry="5" fill="#111111" stroke="#333333" stroke-width="2" />
+    <rect x="10" y="10" width="280" height="160" fill="#222222" />
+    
+    <!-- Browser UI elements -->
+    <rect x="10" y="10" width="280" height="20" fill="#333333" />
+    <circle cx="20" cy="20" r="5" fill="#E50914" />
+    <circle cx="35" cy="20" r="5" fill="#FFC107" />
+    <circle cx="50" cy="20" r="5" fill="#333333" />
+    
+    <!-- E-commerce layout -->
+    <rect x="30" y="50" width="60" height="60" fill="#444444" />
+    <rect x="120" y="50" width="60" height="60" fill="#444444" />
+    <rect x="210" y="50" width="60" height="60" fill="#444444" />
+    <rect x="30" y="120" width="240" height="30" fill="#E50914" opacity="0.8" rx="3" ry="3" />
+    
+    <!-- Mobile device -->
+    <rect x="100" y="230" width="100" height="170" rx="10" ry="10" fill="#111111" stroke="#333333" stroke-width="2" />
+    <rect x="110" y="240" width="80" height="140" fill="#222222" />
+    <rect x="145" y="390" width="10" height="10" rx="5" ry="5" fill="#333333" />
+    
+    <!-- Mobile UI elements -->
+    <rect x="120" y="250" width="60" height="10" fill="#E50914" opacity="0.8" />
+    <rect x="120" y="270" width="60" height="30" fill="#444444" />
+    <rect x="120" y="310" width="60" height="30" fill="#444444" />
+    <rect x="120" y="350" width="60" height="20" fill="#FFC107" opacity="0.8" rx="3" ry="3" />
+  </g>
+  
+  <!-- Code/AI elements -->
+  <g opacity="0.3">
+    <text x="50" y="150" font-family="monospace" font-size="10" fill="#FFFFFF">class Product {</text>
+    <text x="50" y="165" font-family="monospace" font-size="10" fill="#FFFFFF">  constructor(id, name, price) {</text>
+    <text x="50" y="180" font-family="monospace" font-size="10" fill="#FFFFFF">    this.id = id;</text>
+    <text x="50" y="195" font-family="monospace" font-size="10" fill="#E50914">    this.name = name;</text>
+    <text x="50" y="210" font-family="monospace" font-size="10" fill="#FFC107">    this.price = price;</text>
+    <text x="50" y="225" font-family="monospace" font-size="10" fill="#FFFFFF">  }</text>
+    <text x="50" y="240" font-family="monospace" font-size="10" fill="#FFFFFF">}</text>
+    
+    <text x="600" y="350" font-family="monospace" font-size="10" fill="#FFFFFF">function recommend(userId) {</text>
+    <text x="600" y="365" font-family="monospace" font-size="10" fill="#FFFFFF">  const history = getHistory(userId);</text>
+    <text x="600" y="380" font-family="monospace" font-size="10" fill="#E50914">  const predictions = AI.predict(history);</text>
+    <text x="600" y="395" font-family="monospace" font-size="10" fill="#FFC107">  return predictions.top(5);</text>
+    <text x="600" y="410" font-family="monospace" font-size="10" fill="#FFFFFF">}</text>
+  </g>
+  
+  <!-- Decorative elements -->
+  <circle cx="150" cy="450" r="50" fill="#E50914" opacity="0.1" />
+  <circle cx="650" cy="150" r="70" fill="#FFC107" opacity="0.1" />
+  <rect x="100" y="100" width="100" height="60" rx="10" ry="10" fill="#E50914" opacity="0.05" />
+  <rect x="600" y="450" width="120" height="70" rx="10" ry="10" fill="#FFC107" opacity="0.05" />
+  
+  <!-- Dynamic lines -->
+  <line x1="0" y1="300" x2="800" y2="300" stroke="#333333" stroke-width="1" stroke-dasharray="5,5" />
+  <line x1="400" y1="0" x2="400" y2="600" stroke="#333333" stroke-width="1" stroke-dasharray="5,5" />
+  
+  <!-- Project title -->
+  <rect x="250" y="520" width="300" height="60" rx="5" ry="5" fill="#111111" />
+  <text x="400" y="560" font-family="Arial" font-size="24" fill="#FFFFFF" text-anchor="middle">E-commerce Platform</text>
+</svg> 

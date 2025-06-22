@@ -1,0 +1,54 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#000000" />
+  
+  <!-- Office building facade -->
+  <rect x="100" y="100" width="600" height="400" fill="#111111" stroke="#333333" stroke-width="2" />
+  
+  <!-- Windows -->
+  <g>
+    <!-- Row 1 -->
+    <rect x="150" y="150" width="80" height="60" fill="#222222" stroke="#333333" />
+    <rect x="250" y="150" width="80" height="60" fill="#222222" stroke="#333333" />
+    <rect x="350" y="150" width="80" height="60" fill="#222222" stroke="#333333" />
+    <rect x="450" y="150" width="80" height="60" fill="#222222" stroke="#333333" />
+    <rect x="550" y="150" width="80" height="60" fill="#222222" stroke="#333333" />
+    
+    <!-- Row 2 -->
+    <rect x="150" y="230" width="80" height="60" fill="#222222" stroke="#333333" />
+    <rect x="250" y="230" width="80" height="60" fill="#222222" stroke="#333333" />
+    <rect x="350" y="230" width="80" height="60" fill="#E50914" opacity="0.7" stroke="#333333" />
+    <rect x="450" y="230" width="80" height="60" fill="#222222" stroke="#333333" />
+    <rect x="550" y="230" width="80" height="60" fill="#222222" stroke="#333333" />
+    
+    <!-- Row 3 -->
+    <rect x="150" y="310" width="80" height="60" fill="#222222" stroke="#333333" />
+    <rect x="250" y="310" width="80" height="60" fill="#FFC107" opacity="0.5" stroke="#333333" />
+    <rect x="350" y="310" width="80" height="60" fill="#222222" stroke="#333333" />
+    <rect x="450" y="310" width="80" height="60" fill="#222222" stroke="#333333" />
+    <rect x="550" y="310" width="80" height="60" fill="#E50914" opacity="0.5" stroke="#333333" />
+    
+    <!-- Row 4 - Ground floor -->
+    <rect x="150" y="390" width="180" height="110" fill="#222222" stroke="#333333" />
+    <rect x="450" y="390" width="180" height="110" fill="#222222" stroke="#333333" />
+    
+    <!-- Door -->
+    <rect x="350" y="390" width="80" height="110" fill="#333333" stroke="#444444" />
+    <text x="390" y="450" font-family="Arial" font-size="12" fill="#FFFFFF" text-anchor="middle">IMAGINATIVE</text>
+  </g>
+  
+  <!-- Abstract design elements -->
+  <circle cx="700" cy="100" r="40" fill="#E50914" opacity="0.4" />
+  <circle cx="100" cy="500" r="50" fill="#FFC107" opacity="0.3" />
+  
+  <!-- Reflection effects -->
+  <rect x="100" y="100" width="600" height="400" fill="url(#reflect)" opacity="0.1" />
+  
+  <!-- Gradient definitions -->
+  <defs>
+    <linearGradient id="reflect" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.5" />
+    </linearGradient>
+  </defs>
+</svg> 
