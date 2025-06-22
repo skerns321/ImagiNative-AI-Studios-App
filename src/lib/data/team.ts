@@ -14,7 +14,7 @@ export const teamMembers: TeamMember[] = [
     role: 'FOUNDER & DIGITAL INNOVATOR',
     roleColor: 'text-primary-yellow',
     description: 'With over 15 years in digital design, Alex leads our creative vision with a focus on pushing boundaries and creating memorable digital experiences.',
-    image: '/team/Stephen C Kerns.png'
+    image: '/team/stephenkerns.png'
   },
   {
     id: 'chat',
