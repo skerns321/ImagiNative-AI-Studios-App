@@ -28,6 +28,7 @@ const About = dynamic(() => import('@/components/About'), { ssr: false });
 const Insights = dynamic(() => import('@/components/Insights'), { ssr: false });
 const Contact = dynamic(() => import('@/components/Contact'), { ssr: false });
 const SocialLinks = dynamic(() => import('@/components/SocialLinks'), { ssr: false });
+const Testimonials = dynamic(() => import('@/components/Testimonials'), { ssr: false });
 
 export default function Home() {
   return (
@@ -61,6 +62,11 @@ export default function Home() {
         <Suspense fallback={<SectionLoading />}>
           <section id="about">
             <About />
+          </section>
+        </Suspense>
+        <Suspense fallback={<SectionLoading />}>
+          <section id="testimonials">
+            <Testimonials />
           </section>
         </Suspense>
         <Suspense fallback={<SectionLoading />}>

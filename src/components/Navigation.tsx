@@ -18,7 +18,7 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const menuItems = ['WORK', 'SERVICES', 'ABOUT', 'INSIGHTS', 'CONTACT'];
+  const menuItems = ['WORK', 'SERVICES', 'ABOUT', 'TESTIMONIALS', 'INSIGHTS', 'CONTACT'];
 
   return (
     <header 
@@ -28,7 +28,7 @@ export default function Navigation() {
       <nav className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="font-mono text-xl md:text-2xl relative group">
+          <Link href="/" className="font-mono text-lg md:text-xl relative group whitespace-nowrap">
             <span className="text-primary-red">[</span>
             IMAGI<span className="text-primary-yellow">NATIVE</span>
             <span className="text-primary-red">]</span>
@@ -37,12 +37,12 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-4">
             {menuItems.map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="font-mono text-primary-white hover:text-primary-red relative group"
+                className="font-mono text-sm text-primary-white hover:text-primary-red relative group"
               >
                 _{item}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-red 
@@ -77,7 +77,7 @@ export default function Navigation() {
                     key={item}
                     href={`#${item.toLowerCase()}`}
                     onClick={() => setIsOpen(false)}
-                    className="block py-3 px-4 font-mono text-primary-white hover:text-primary-red 
+                    className="block py-3 px-4 font-mono text-sm text-primary-white hover:text-primary-red 
                              hover:bg-primary-white/5 transition-colors"
                   >
                     _{item}
