@@ -76,19 +76,4 @@ export default function InsightsPage() {
       </div>
     </main>
   );
-}
-
-// Security Monitoring
-export async function logSecurityEvent() {
-  const securityEvents = {
-    suspiciousActivities: [],
-    rateLimitViolations: [],
-    authenticationFailures: [],
-    apiMisuseAttempts: []
-  };
-
-  return securityEvents;
-}
-
-// Performance monitoring and external services configuration
-// can be implemented in separate utility files 
+} 
