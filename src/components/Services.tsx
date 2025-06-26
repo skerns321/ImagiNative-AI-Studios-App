@@ -70,10 +70,10 @@ export default function Services() {
   }
 
   return (
-    <section id="services" className="py-20 px-4 bg-primary-black">
+    <section id="services" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-primary-black">
       <div className="max-w-7xl mx-auto">
         <motion.h2
-          className="text-4xl font-mono mb-12 border-l-4 border-primary-red pl-4"
+          className="text-2xl sm:text-3xl lg:text-4xl font-mono mb-8 sm:mb-10 lg:mb-12 border-l-4 border-primary-red pl-4"
           initial={false}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true }}
@@ -81,23 +81,67 @@ export default function Services() {
           _SERVICES
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {services.map((service) => (
-            <WindowFrame key={service.id} title={service.title}>
-              <div className="flex flex-col items-start space-y-4">
-                <div className="p-2 border-2 border-primary-red">
-                  <service.Icon className="w-8 h-8 text-primary-red" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+          {services.map((service, index) => (
+            <motion.div
+              key={service.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+            >
+              <WindowFrame title={service.title}>
+                <div className="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4">
+                  <div className="flex-shrink-0 p-2 sm:p-3 border-2 border-primary-red">
+                    <service.Icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary-red" />
+                  </div>
+                  <div className="flex-1">
+                    <p className="font-mono text-sm sm:text-base text-primary-white/80 whitespace-pre-line leading-relaxed">
+                      {Array.isArray(service.description)
+                        ? service.description.join('\n')
+                        : service.description}
+                    </p>
+                  </div>
                 </div>
-                <p className="font-mono text-primary-white/80 whitespace-pre-line">
-                  {Array.isArray(service.description)
-                    ? service.description.join('\n')
-                    : service.description}
-                </p>
-
-              </div>
-            </WindowFrame>
+              </WindowFrame>
+            </motion.div>
           ))}
         </div>
+
+        {/* Call to Action */}
+        <motion.div 
+          className="mt-12 sm:mt-16 lg:mt-20 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+        >
+          <div className="border-2 border-primary-white p-6 sm:p-8 relative max-w-2xl mx-auto">
+            <div className="absolute -top-2 -right-2 w-8 h-8 sm:w-12 sm:h-12 bg-primary-red" />
+            <h3 className="font-mono text-lg sm:text-xl lg:text-2xl text-primary-white mb-4">
+              READY_TO_START?
+            </h3>
+            <p className="font-mono text-sm sm:text-base text-primary-white/70 mb-6">
+              &gt; Let's discuss your project and bring your ideas to life
+            </p>
+            <button 
+              onClick={() => {
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className="inline-block bg-primary-black border-2 border-primary-white px-6 py-3 
+                       font-mono uppercase relative hover:translate-x-1 hover:-translate-y-1 
+                       transition-transform group touch-manipulation"
+            >
+              <span className="relative z-10 text-sm sm:text-base">GET_STARTED</span>
+              <div className="absolute inset-0 bg-primary-red -z-0 translate-x-2 
+                            translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3 
+                            transition-transform" />
+            </button>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

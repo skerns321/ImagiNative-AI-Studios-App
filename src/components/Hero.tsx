@@ -105,15 +105,15 @@ export default function Hero() {
 
           {/* Content */}
           <motion.div 
-            className="absolute inset-0 flex flex-col items-center justify-center text-center px-4"
+            className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
-            <h1 className="text-4xl md:text-6xl font-mono text-primary-white mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-mono text-primary-white mb-2 sm:mb-4 leading-tight">
               {heroImages[currentIndex].title}
             </h1>
-            <p className="text-xl font-mono text-primary-white/80">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl font-mono text-primary-white/80 max-w-3xl">
               {heroImages[currentIndex].description}
             </p>
           </motion.div>
@@ -121,18 +121,19 @@ export default function Hero() {
       </AnimatePresence>
 
       {/* Navigation Controls */}
-      <div className="absolute bottom-8 left-0 right-0 flex justify-center items-center gap-4 z-10">
+      <div className="absolute bottom-4 sm:bottom-6 lg:bottom-8 left-0 right-0 flex justify-center items-center gap-2 sm:gap-4 z-10 px-4">
         <button
           onClick={handlePrevious}
-          className="p-2 border-2 border-primary-white text-primary-white 
-                   hover:border-primary-red hover:text-primary-red transition-colors"
+          className="p-2 sm:p-3 border-2 border-primary-white text-primary-white 
+                   hover:border-primary-red hover:text-primary-red transition-colors
+                   flex-shrink-0"
           aria-label="Previous slide"
         >
-          <ChevronLeft className="w-6 h-6" />
+          <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
         </button>
 
         {/* Dots */}
-        <div className="flex gap-2">
+        <div className="flex gap-2 sm:gap-3">
           {heroImages.map((_, index) => (
             <button
               key={index}
@@ -140,7 +141,7 @@ export default function Hero() {
                 setIsAutoPlaying(false);
                 setCurrentIndex(index);
               }}
-              className={`w-2 h-2 rounded-full transition-colors
+              className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors
                        ${currentIndex === index ? 'bg-primary-red' : 'bg-primary-white/50 hover:bg-primary-white'}`}
               aria-label={`Go to slide ${index + 1}`}
             />
@@ -149,17 +150,18 @@ export default function Hero() {
 
         <button
           onClick={handleNext}
-          className="p-2 border-2 border-primary-white text-primary-white 
-                   hover:border-primary-red hover:text-primary-red transition-colors"
+          className="p-2 sm:p-3 border-2 border-primary-white text-primary-white 
+                   hover:border-primary-red hover:text-primary-red transition-colors
+                   flex-shrink-0"
           aria-label="Next slide"
         >
-          <ChevronRight className="w-6 h-6" />
+          <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
         </button>
       </div>
 
-      {/* Decorative Elements */}
-      <div className="absolute top-4 right-4 w-24 h-24 border-t-4 border-r-4 border-primary-red" />
-      <div className="absolute bottom-4 left-4 w-24 h-24 border-b-4 border-l-4 border-primary-yellow" />
+      {/* Decorative Elements - Hidden on small screens */}
+      <div className="hidden sm:block absolute top-4 right-4 w-16 h-16 lg:w-24 lg:h-24 border-t-4 border-r-4 border-primary-red" />
+      <div className="hidden sm:block absolute bottom-4 left-4 w-16 h-16 lg:w-24 lg:h-24 border-b-4 border-l-4 border-primary-yellow" />
     </div>
   );
 }
