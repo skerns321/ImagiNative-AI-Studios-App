@@ -121,7 +121,7 @@ export default function Hero() {
       </AnimatePresence>
 
       {/* Navigation Controls */}
-      <div className="absolute bottom-4 sm:bottom-6 lg:bottom-8 left-0 right-0 flex justify-center items-center gap-2 sm:gap-4 z-10 px-4">
+      <div className="absolute bottom-12 sm:bottom-16 lg:bottom-20 left-0 right-0 flex justify-center items-center gap-2 sm:gap-4 z-10 px-4">
         <button
           onClick={handlePrevious}
           className="p-2 sm:p-3 border-2 border-primary-white text-primary-white 

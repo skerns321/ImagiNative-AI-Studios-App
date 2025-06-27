@@ -171,8 +171,8 @@ export default function Contact() {
             <div className="space-y-4 sm:space-y-6">
               {[
                 { icon: Mail, label: 'Email', value: 'hello@imaginative.studio' },
-                { icon: Phone, label: 'Phone', value: '+1 (555) 123-4567' },
-                { icon: MapPin, label: 'Location', value: 'San Francisco, CA' }
+                { icon: Phone, label: 'Phone', value: '+1 (910) 827-9846' },
+                { icon: MapPin, label: 'Location', value: 'Red Springs, NC' }
               ].map((item, index) => (
                 <motion.div 
                   key={item.label}
