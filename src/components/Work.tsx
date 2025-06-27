@@ -195,7 +195,7 @@ export default function Work() {
                      font-mono uppercase relative hover:translate-x-1 hover:-translate-y-1 
                      transition-transform group touch-manipulation"
           >
-            <span className="relative z-10 text-sm sm:text-base">VIEW_ALL_WORK</span>
+            <span className="relative z-10 text-sm sm:text-base text-primary-black">VIEW_ALL_WORK</span>
             <div className="absolute inset-0 bg-primary-yellow -z-0 translate-x-2 
                           translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3 
                           transition-transform" />

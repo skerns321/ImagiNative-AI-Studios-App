@@ -60,28 +60,63 @@ export default function Navigation() {
 
   return (
     <header 
-      className={`fixed w-full top-0 z-50 bg-primary-black transition-all duration-300
-                ${scrolled ? 'border-b-4' : ''} border-primary-red backdrop-blur-sm bg-primary-black/95`}
+      className={`fixed w-full top-0 z-50 transition-all duration-300 safe-area-top
+                ${scrolled 
+                  ? 'bg-primary-black/95 backdrop-blur-md border-b-2 border-primary-red shadow-lg' 
+                  : 'bg-primary-black/90 backdrop-blur-sm'
+                }`}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20">
-          {/* Logo */}
-          <Link href="/" className="font-mono text-sm sm:text-base lg:text-lg xl:text-xl relative group whitespace-nowrap flex-shrink-0">
+      <nav className="max-w-7xl mx-auto container-padding">
+        <div className="flex items-center justify-between h-14 sm:h-16 md:h-20 lg:h-24">
+          {/* Logo - Responsive sizing and visibility */}
+          <Link 
+            href="/" 
+            className="font-mono relative group whitespace-nowrap flex-shrink-0 
+                     text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl
+                     hover:scale-105 transition-transform duration-200"
+            aria-label="ImagiNative AI Studios Home"
+          >
             <span className="text-primary-red">[</span>
-            <span className="hidden xs:inline">IMAGI</span><span className="text-primary-yellow">NATIVE</span>
+            <span className="text-primary-yellow">IMAGINATIVE</span>
             <span className="text-primary-red">]</span>
-            <span className="text-primary-white hidden sm:inline">_AI STUDIOS</span>
-            <span className="text-primary-white sm:hidden">_AI</span>
+            <span className="text-primary-white">_AI STUDIOS</span>
             <span className="text-primary-red animate-blink">_</span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-2 xl:gap-4">
+          {/* Tablet Navigation - Shows on medium screens */}
+          <div className="hidden md:flex lg:hidden items-center gap-2">
+            {menuItems.slice(0, 4).map((item) => (
+              <button
+                key={item}
+                onClick={() => handleMenuClick(item)}
+                className="font-mono text-xs text-primary-white hover:text-primary-red 
+                         relative group px-3 py-2 transition-colors touch-target"
+              >
+                _{item}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-red 
+                               group-hover:w-full transition-all duration-300" />
+              </button>
+            ))}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 text-primary-white hover:text-primary-red 
+                       border border-primary-white hover:border-primary-red transition-colors
+                       touch-target ml-2"
+              aria-label="More menu options"
+            >
+              <Menu className="w-4 h-4" />
+            </button>
+          </div>
+
+          {/* Desktop Navigation - Full menu on large screens */}
+          <div className="hidden lg:flex items-center">
             {menuItems.map((item) => (
               <button
                 key={item}
                 onClick={() => handleMenuClick(item)}
-                className="font-mono text-xs xl:text-sm text-primary-white hover:text-primary-red relative group px-2 py-1 transition-colors"
+                className="font-mono text-xs xl:text-sm text-primary-white hover:text-primary-red 
+                         relative group px-3 xl:px-4 py-2 transition-colors touch-target
+                         min-w-[80px] xl:min-w-[90px] text-center"
               >
                 _{item}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-red 
@@ -90,65 +125,95 @@ export default function Navigation() {
             ))}
           </div>
 
-          {/* Mobile/Tablet Menu Button */}
+          {/* Mobile Menu Button - Shows on small screens */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 text-primary-white hover:text-primary-red 
+            className="md:hidden p-2 text-primary-white hover:text-primary-red 
                      border-2 border-primary-white hover:border-primary-red transition-colors
-                     touch-manipulation"
+                     touch-target rounded-sm"
             aria-label={isOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isOpen}
           >
-            {isOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
+            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
 
-        {/* Mobile/Tablet Menu */}
+        {/* Mobile/Tablet Overlay Menu */}
         <AnimatePresence>
           {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className="lg:hidden overflow-hidden"
-            >
-              <div className="py-4 border-t-2 border-primary-white/20 space-y-1">
-                {menuItems.map((item, index) => (
-                  <motion.button
-                    key={item}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    onClick={() => handleMenuClick(item)}
-                    className="block w-full text-left py-3 px-4 font-mono text-sm sm:text-base text-primary-white hover:text-primary-red 
-                             hover:bg-primary-white/5 transition-colors touch-manipulation"
+            <>
+              {/* Backdrop */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+                onClick={() => setIsOpen(false)}
+              />
+              
+              {/* Menu Content */}
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2, ease: 'easeOut' }}
+                className="absolute top-full left-0 right-0 bg-primary-black border-b-2 border-primary-red
+                         shadow-2xl z-50 max-h-[calc(100vh-4rem)] overflow-y-auto"
+              >
+                <div className="container-padding py-4 space-y-1">
+                  {/* Menu Items */}
+                  {menuItems.map((item, index) => (
+                    <motion.button
+                      key={item}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.05, duration: 0.2 }}
+                      onClick={() => handleMenuClick(item)}
+                      className="block w-full text-left py-4 px-4 font-mono 
+                               text-sm sm:text-base text-primary-white hover:text-primary-red 
+                               hover:bg-primary-white/5 transition-colors touch-target
+                               border-l-2 border-transparent hover:border-primary-red"
+                    >
+                      <span className="flex items-center">
+                        <span className="text-primary-red mr-2">&gt;</span>
+                        _{item}
+                      </span>
+                    </motion.button>
+                  ))}
+                  
+                  {/* Call-to-Action Section */}
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: menuItems.length * 0.05 + 0.1, duration: 0.2 }}
+                    className="pt-6 mt-6 border-t border-primary-white/20"
                   >
-                    _{item}
-                  </motion.button>
-                ))}
-                
-                {/* Additional mobile-only content */}
-                <motion.div 
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: menuItems.length * 0.1 }}
-                  className="pt-4 mt-4 border-t border-primary-white/20"
-                >
-                  <div className="px-4 text-xs font-mono text-primary-white/60">
-                    &gt; Ready to start your project?
-                  </div>
-                  <button
-                    onClick={() => handleMenuClick('CONTACT')}
-                    className="w-full mt-2 mx-4 py-2 px-4 bg-primary-red text-primary-white font-mono text-sm
-                             hover:bg-primary-red/80 transition-colors touch-manipulation"
-                    style={{ width: 'calc(100% - 2rem)' }}
-                  >
-                    GET_STARTED_
-                  </button>
-                </motion.div>
-              </div>
-            </motion.div>
+                    <div className="px-4 space-y-3">
+                      <div className="text-xs font-mono text-primary-white/60">
+                        &gt; Ready to start your project?
+                      </div>
+                      <button
+                        onClick={() => handleMenuClick('CONTACT')}
+                        className="w-full py-3 px-4 bg-primary-red text-primary-white font-mono text-sm
+                                 hover:bg-primary-red/80 transition-colors touch-target
+                                 border-2 border-primary-red hover:border-primary-white
+                                 relative group overflow-hidden"
+                      >
+                        <span className="relative z-10">GET_STARTED_</span>
+                        <div className="absolute inset-0 bg-primary-white/10 transform scale-x-0 
+                                     group-hover:scale-x-100 transition-transform origin-left duration-300" />
+                      </button>
+                      
+                      {/* Contact Info */}
+                      <div className="text-xs font-mono text-primary-white/40 space-y-1">
+                        <div>&gt; hello@imaginative-ai.com</div>
+                        <div>&gt; +1 (555) 123-4567</div>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+              </motion.div>
+            </>
           )}
         </AnimatePresence>
       </nav>

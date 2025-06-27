@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import WindowFrame from './WindowFrame';
 import {
   Monitor,
@@ -21,7 +22,8 @@ const services = [
       '> Custom Applications',
       '> Managed Services'
     ],
-    Icon: Monitor
+    Icon: Monitor,
+    href: '/services/web-development'
   },
   {
     id: 'ai-business',
@@ -32,7 +34,8 @@ const services = [
       '> Tailored AI Solutions',
       '> AI Strategy & Consultation'
     ],
-    Icon: Cpu
+    Icon: Cpu,
+    href: '/services/ai-business-solutions'
   },
   {
     id: 'social-media',
@@ -43,7 +46,8 @@ const services = [
       '> Campaign & Ad Management',
       '> Engagement & Analytics'
     ],
-    Icon: MessageSquare
+    Icon: MessageSquare,
+    href: '/services/social-media-management'
   },
   {
     id: 'branding-marketing',
@@ -54,7 +58,8 @@ const services = [
       '> Data-driven visibility strategies',
       '> Social listening for targeted outreach'
     ],
-    Icon: Megaphone
+    Icon: Megaphone,
+    href: '/services/branding-and-marketing'
   }
 ];
 
@@ -90,20 +95,32 @@ export default function Services() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
             >
-              <WindowFrame title={service.title}>
-                <div className="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4">
-                  <div className="flex-shrink-0 p-2 sm:p-3 border-2 border-primary-red">
-                    <service.Icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary-red" />
+              <Link href={service.href} className="block group">
+                <WindowFrame title={service.title}>
+                  <div className="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4 
+                                group-hover:transform group-hover:translate-x-1 transition-transform">
+                    <div className="flex-shrink-0 p-2 sm:p-3 border-2 border-primary-red 
+                                  group-hover:border-primary-yellow transition-colors">
+                      <service.Icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary-red 
+                                              group-hover:text-primary-yellow transition-colors" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="font-mono text-sm sm:text-base text-primary-white/80 
+                                   group-hover:text-primary-white whitespace-pre-line leading-relaxed 
+                                   transition-colors">
+                        {Array.isArray(service.description)
+                          ? service.description.join('\n')
+                          : service.description}
+                      </p>
+                      <div className="mt-4 flex items-center gap-2 text-primary-yellow 
+                                    group-hover:text-primary-white transition-colors">
+                        <span className="font-mono text-sm">LEARN_MORE</span>
+                        <span className="font-mono text-sm">&gt;&gt;</span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex-1">
-                    <p className="font-mono text-sm sm:text-base text-primary-white/80 whitespace-pre-line leading-relaxed">
-                      {Array.isArray(service.description)
-                        ? service.description.join('\n')
-                        : service.description}
-                    </p>
-                  </div>
-                </div>
-              </WindowFrame>
+                </WindowFrame>
+              </Link>
             </motion.div>
           ))}
         </div>

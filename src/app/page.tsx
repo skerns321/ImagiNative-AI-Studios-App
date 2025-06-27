@@ -8,8 +8,6 @@ import SkipLink from '@/components/SkipLink';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import Footer from '@/components/Footer';
-import { ErrorBoundary } from '@/components/ErrorBoundary';
-import ErrorFallback from '@/components/ErrorFallback';
 
 // Dynamic import for client-only components
 const ScrollProgress = dynamic(() => import('@/components/ScrollProgress'), { 
@@ -20,6 +18,8 @@ const SectionIndicator = dynamic(() => import('@/components/SectionIndicator'), 
   ssr: false,
   loading: () => null
 });
+
+
 
 // Dynamic imports for other components with error fallbacks
 const Services = dynamic(() => import('@/components/Services'), { 
@@ -49,7 +49,7 @@ const Testimonials = dynamic(() => import('@/components/Testimonials'), {
 
 export default function Home() {
   return (
-    <ErrorBoundary fallback={<ErrorFallback />}>
+    <>
       <SkipLink />
       <Navigation />
       
@@ -59,66 +59,53 @@ export default function Home() {
       
       <main 
         id="main-content" 
-        className="pt-20"
         role="main" 
         tabIndex={-1}
       >
-        <ErrorBoundary fallback={<ErrorFallback />}>
-          <section id="hero">
-            <Hero />
-          </section>
-        </ErrorBoundary>
+        <section id="hero">
+          <Hero />
+        </section>
 
-        <ErrorBoundary fallback={<ErrorFallback />}>
+        <div className="pt-20">
           <Suspense fallback={<SectionLoading />}>
             <section id="work">
               <Work />
             </section>
           </Suspense>
-        </ErrorBoundary>
 
-        <ErrorBoundary fallback={<ErrorFallback />}>
           <Suspense fallback={<SectionLoading />}>
             <section id="services">
               <Services />
             </section>
           </Suspense>
-        </ErrorBoundary>
 
-        <ErrorBoundary fallback={<ErrorFallback />}>
           <Suspense fallback={<SectionLoading />}>
             <section id="about">
               <About />
             </section>
           </Suspense>
-        </ErrorBoundary>
 
-        <ErrorBoundary fallback={<ErrorFallback />}>
           <Suspense fallback={<SectionLoading />}>
             <section id="testimonials">
               <Testimonials />
             </section>
           </Suspense>
-        </ErrorBoundary>
 
-        <ErrorBoundary fallback={<ErrorFallback />}>
           <Suspense fallback={<SectionLoading />}>
             <section id="insights">
               <Insights />
             </section>
           </Suspense>
-        </ErrorBoundary>
 
-        <ErrorBoundary fallback={<ErrorFallback />}>
           <Suspense fallback={<SectionLoading />}>
             <section id="contact">
               <Contact />
             </section>
           </Suspense>
-        </ErrorBoundary>
+        </div>
       </main>
       
       <Footer />
-    </ErrorBoundary>
+    </>
   );
 }

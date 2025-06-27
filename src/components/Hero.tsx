@@ -64,7 +64,7 @@ export default function Hero() {
   };
 
   return (
-    <div className="relative min-h-[100svh] bg-primary-black overflow-hidden">
+    <div className="relative min-h-screen bg-primary-black overflow-hidden">
       {/* Image Slider */}
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
