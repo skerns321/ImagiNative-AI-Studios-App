@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft, Cpu, Bot, Brain, Target, Zap } from 'lucide-react';
+import CyberpunkBackground from '@/components/CyberpunkBackground';
 
 export const metadata: Metadata = {
   title: 'AI Business Solutions | ImagiNative AI Studios',
@@ -9,8 +10,9 @@ export const metadata: Metadata = {
 
 export default function AIBusinessSolutionsPage() {
   return (
-    <main className="min-h-screen pt-20 sm:pt-24 lg:pt-32 pb-16 px-4 sm:px-6 lg:px-8 bg-primary-black">
-      <div className="max-w-5xl mx-auto">
+    <main className="min-h-screen pt-20 sm:pt-24 lg:pt-32 pb-16 px-4 sm:px-6 lg:px-8 bg-primary-black relative">
+      <CyberpunkBackground intensity="medium" />
+      <div className="max-w-5xl mx-auto relative">
         {/* Header */}
         <div className="mb-8 sm:mb-12 lg:mb-16">
           <Link

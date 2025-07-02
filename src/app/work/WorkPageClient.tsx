@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Search, Filter } from 'lucide-react';
 import { projects } from '@/lib/data/projects';
+import CyberpunkBackground from '@/components/CyberpunkBackground';
 
 const categories = ['All', 'Branding', 'Development', 'AI', 'Web3', 'Strategy', 'Design'];
 
@@ -52,8 +53,9 @@ export default function WorkPageClient() {
   };
 
   return (
-    <main className="min-h-screen pt-20 sm:pt-24 lg:pt-32 pb-16 px-4 sm:px-6 lg:px-8 bg-primary-black">
-      <div className="max-w-7xl mx-auto">
+    <main className="min-h-screen pt-20 sm:pt-24 lg:pt-32 pb-16 px-4 sm:px-6 lg:px-8 bg-primary-black relative">
+      <CyberpunkBackground intensity="medium" />
+      <div className="max-w-7xl mx-auto relative">
         {/* Header */}
         <div className="mb-8 sm:mb-12 lg:mb-16">
           <Link

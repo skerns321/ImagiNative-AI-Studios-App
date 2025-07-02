@@ -8,6 +8,7 @@ import SkipLink from '@/components/SkipLink';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import Footer from '@/components/Footer';
+import CyberpunkBackground from '@/components/CyberpunkBackground';
 
 // Dynamic import for client-only components
 const ScrollProgress = dynamic(() => import('@/components/ScrollProgress'), { 
@@ -56,6 +57,9 @@ export default function Home() {
       {/* Client-side only components */}
       <ScrollProgress />
       <SectionIndicator />
+      
+      {/* Cyberpunk Background */}
+      <CyberpunkBackground intensity="low" />
       
       <main 
         id="main-content" 

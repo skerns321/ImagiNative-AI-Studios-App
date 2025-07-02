@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { projects } from '@/lib/data/projects';
 import { Metadata } from 'next';
+import CyberpunkBackground from '@/components/CyberpunkBackground';
 
 interface ProjectPageProps {
   params: {
@@ -39,8 +40,9 @@ export default function ProjectPage({ params }: ProjectPageProps) {
   }
 
   return (
-    <main className="min-h-screen pt-32 pb-16 px-4 md:px-8 bg-primary-black">
-      <article className="max-w-6xl mx-auto">
+    <main className="min-h-screen pt-32 pb-16 px-4 md:px-8 bg-primary-black relative">
+      <CyberpunkBackground intensity="low" />
+      <article className="max-w-6xl mx-auto relative">
         {/* Project Header */}
         <div className="relative h-[60vh] mb-12 border-2 border-primary-white">
           <Image

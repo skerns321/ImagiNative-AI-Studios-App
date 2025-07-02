@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { insights } from '@/lib/data/insights';
 import { ArrowLeft } from 'lucide-react';
+import CyberpunkBackground from '@/components/CyberpunkBackground';
 
 export const metadata = {
   title: 'Insights & Articles | ImagiNative AI Studios',
@@ -10,8 +11,9 @@ export const metadata = {
 
 export default function InsightsPage() {
   return (
-    <main className="min-h-screen pt-32 pb-16 px-4 md:px-8 bg-primary-black">
-      <div className="max-w-7xl mx-auto">
+    <main className="min-h-screen pt-32 pb-16 px-4 md:px-8 bg-primary-black relative">
+      <CyberpunkBackground intensity="medium" />
+      <div className="max-w-7xl mx-auto relative">
         {/* Header */}
         <div className="mb-16 border-4 border-primary-white p-8 relative">
           <div className="absolute -top-4 -right-4 w-16 h-16 bg-primary-red" />

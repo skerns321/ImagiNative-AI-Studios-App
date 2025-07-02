@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { insights } from '@/lib/data/insights';
 import { Metadata } from 'next';
 import { ArrowLeft } from 'lucide-react';
+import CyberpunkBackground from '@/components/CyberpunkBackground';
 
 interface InsightPageProps {
   params: {
@@ -34,8 +35,9 @@ export default function InsightPage({ params }: InsightPageProps) {
   }
 
   return (
-    <main className="min-h-screen pt-32 pb-16 px-4 md:px-8">
-      <article className="max-w-4xl mx-auto">
+    <main className="min-h-screen pt-32 pb-16 px-4 md:px-8 bg-primary-black relative">
+      <CyberpunkBackground intensity="low" />
+      <article className="max-w-4xl mx-auto relative">
         {/* Category */}
         <div className="mb-8">
           <span className="inline-block px-4 py-2 border-2 border-primary-yellow 
