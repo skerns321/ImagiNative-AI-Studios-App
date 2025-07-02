@@ -21,12 +21,6 @@ export default function Insights() {
 
   return (
     <section id="insights" className="py-24 bg-primary-black relative">
-      {/* Brutalist Grid Background */}
-      <div className="absolute inset-0 grid grid-cols-12 gap-4 opacity-10">
-        {Array(12).fill(0).map((_, i) => (
-          <div key={i} className="border-l-2 border-primary-white h-full" />
-        ))}
-      </div>
       
       <div className="max-w-7xl mx-auto px-4 relative">
         {/* Section Header with Brutalist Style */}
