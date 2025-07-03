@@ -46,12 +46,14 @@ NODE_ENV=development
 ## 🔧 Setup Instructions
 
 ### Step 1: Create Environment File
+
 ```bash
 # Create your local environment file
 touch .env.local
 ```
 
 ### Step 2: Firebase Setup
+
 1. Go to [Firebase Console](https://console.firebase.google.com/)
 2. Create a new project or select existing
 3. Go to Project Settings -> General
@@ -62,26 +64,31 @@ touch .env.local
 ### Step 3: AI Service Setup
 
 #### OpenAI
+
 1. Visit [OpenAI Platform](https://platform.openai.com/api-keys)
 2. Create new API key
 3. Add to `.env.local` as `OPENAI_API_KEY`
 
 #### Anthropic
+
 1. Visit [Anthropic Console](https://console.anthropic.com/)
 2. Generate API key
 3. Add to `.env.local` as `ANTHROPIC_API_KEY`
 
 #### Replicate
+
 1. Visit [Replicate](https://replicate.com/account/api-tokens)
 2. Create API token
 3. Add to `.env.local` as `REPLICATE_API_TOKEN`
 
 #### Deepgram
+
 1. Visit [Deepgram Console](https://console.deepgram.com/)
 2. Create API key
 3. Add to `.env.local` as `DEEPGRAM_API_KEY`
 
 ### Step 4: Test Setup
+
 ```bash
 # Start development server to test
 npm run dev
@@ -104,6 +111,7 @@ For production deployment (Vercel, Netlify, etc.):
 4. Set `NODE_ENV=production`
 
 ### Vercel Setup
+
 ```bash
 # Using Vercel CLI
 vercel env add OPENAI_API_KEY
@@ -116,21 +124,25 @@ vercel env add NEXT_PUBLIC_FIREBASE_API_KEY
 ### Common Issues
 
 **Firebase connection errors:**
+
 - Check all `NEXT_PUBLIC_FIREBASE_*` variables are set
 - Verify Firebase project is active
 - Check Firebase rules allow read/write
 
 **AI API errors:**
+
 - Verify API keys are correct and active
 - Check billing/usage limits
 - Ensure API keys have required permissions
 
 **Build failures:**
+
 - Make sure all required environment variables are set
 - Check for typos in variable names
 - Verify `.env.local` is not committed to git
 
 ### Testing Environment Variables
+
 ```typescript
 // Add to any component for debugging
 console.log('Firebase Config:', {
@@ -145,6 +157,7 @@ console.log('OpenAI Key exists:', !!process.env.OPENAI_API_KEY);
 ## 📋 Environment Checklist
 
 ### Development Setup
+
 - [ ] `.env.local` file created
 - [ ] All Firebase variables set
 - [ ] At least one AI API key configured
@@ -153,6 +166,7 @@ console.log('OpenAI Key exists:', !!process.env.OPENAI_API_KEY);
 - [ ] AI services responding
 
 ### Production Setup
+
 - [ ] All environment variables set in deployment platform
 - [ ] Production Firebase project configured
 - [ ] Production API keys configured
@@ -161,4 +175,4 @@ console.log('OpenAI Key exists:', !!process.env.OPENAI_API_KEY);
 
 ---
 
-**Remember**: Keep your API keys secure and never share them publicly! 
+**Remember**: Keep your API keys secure and never share them publicly!
