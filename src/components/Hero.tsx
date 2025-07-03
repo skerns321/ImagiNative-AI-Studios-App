@@ -43,8 +43,6 @@ const gradientBackgrounds = [
 export default function Hero() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const [isLoading, setIsLoading] = useState(true);
-
   useEffect(() => {
     if (!isAutoPlaying) return;
     const interval = setInterval(() => {
@@ -78,26 +76,15 @@ export default function Hero() {
             ease: "easeInOut"
           }}
         >
-          {/* Fallback gradient - show while image is loading */}
-          <div className={`absolute inset-0 ${gradientBackgrounds[currentIndex]} transition-opacity duration-500
-                        ${isLoading ? 'opacity-100' : 'opacity-0'}`} />
-
           {/* Optimized Image */}
           <Image
             src={heroImages[currentIndex].src}
             alt={heroImages[currentIndex].alt}
             fill
-            className={`object-cover transition-opacity duration-500 
-                     ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+            className="object-cover"
             priority={currentIndex === 0}
             sizes="100vw"
             quality={90}
-            onLoad={() => setIsLoading(false)}
-            onError={(e) => {
-              const target = e.target as HTMLImageElement;
-              target.style.display = "none";
-              setIsLoading(false);
-            }}
           />
 
           {/* Gradient Overlay */}
@@ -110,10 +97,10 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-mono text-primary-white mb-3 sm:mb-4 leading-tight">
+            <h1 className="text-fluid-6xl font-mono text-primary-white mb-3 sm:mb-4 leading-tight">
               {heroImages[currentIndex].title}
             </h1>
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-mono text-primary-white/80 max-w-3xl">
+            <p className="text-fluid-xl font-mono text-primary-white/80 max-w-3xl">
               {heroImages[currentIndex].description}
             </p>
           </motion.div>

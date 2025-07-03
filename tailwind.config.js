@@ -57,6 +57,17 @@ module.exports = {
         '7xl': ['4.5rem', { lineHeight: '1' }],
         '8xl': ['6rem', { lineHeight: '1' }],
         '9xl': ['8rem', { lineHeight: '1' }],
+        // Fluid typography sizes using clamp()
+        'fluid-xs': ['clamp(0.75rem, 0.5vw + 0.5rem, 0.875rem)', { lineHeight: '1.2' }],
+        'fluid-sm': ['clamp(0.875rem, 0.75vw + 0.625rem, 1rem)', { lineHeight: '1.3' }],
+        'fluid-base': ['clamp(1rem, 1vw + 0.75rem, 1.125rem)', { lineHeight: '1.4' }],
+        'fluid-lg': ['clamp(1.125rem, 1.25vw + 0.875rem, 1.5rem)', { lineHeight: '1.4' }],
+        'fluid-xl': ['clamp(1.25rem, 1.5vw + 1rem, 1.875rem)', { lineHeight: '1.3' }],
+        'fluid-2xl': ['clamp(1.5rem, 2vw + 1.25rem, 2.25rem)', { lineHeight: '1.2' }],
+        'fluid-3xl': ['clamp(1.875rem, 2.5vw + 1.5rem, 3rem)', { lineHeight: '1.1' }],
+        'fluid-4xl': ['clamp(2.25rem, 3vw + 1.75rem, 3.75rem)', { lineHeight: '1' }],
+        'fluid-5xl': ['clamp(2.5rem, 4vw + 2rem, 4.5rem)', { lineHeight: '1' }],
+        'fluid-6xl': ['clamp(3rem, 5vw + 2.5rem, 6rem)', { lineHeight: '1' }],
       },
       spacing: {
         '18': '4.5rem',

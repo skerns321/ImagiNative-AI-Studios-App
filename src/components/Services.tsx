@@ -80,12 +80,12 @@ export default function Services() {
         {/* Section Header with Brutalist Style */}
         <div className="mb-16 border-4 border-primary-white p-8 relative">
           <div className="absolute -top-4 -right-4 w-16 h-16 bg-primary-red" />
-          <h2 className="font-mono text-5xl uppercase relative z-10">
+          <h2 className="font-mono text-fluid-4xl uppercase relative z-10">
             <span className="text-primary-red">[</span>
             SERVICES
             <span className="text-primary-red">]_</span>
           </h2>
-          <p className="font-mono text-primary-white/70 mt-4">
+          <p className="font-mono text-fluid-sm text-primary-white/70 mt-4">
             &gt; SELECT * FROM services WHERE status = 'active';
           </p>
         </div>

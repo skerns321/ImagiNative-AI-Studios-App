@@ -71,15 +71,16 @@ export default function Navigation() {
           {/* Logo - Responsive sizing and visibility */}
           <Link 
             href="/" 
-            className="font-mono relative group whitespace-nowrap flex-shrink-0 
-                     text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl
+            className="font-mono relative group flex-shrink-0 
+                     text-fluid-base
                      hover:scale-105 transition-transform duration-200"
             aria-label="ImagiNative AI Studios Home"
           >
             <span className="text-primary-red">[</span>
             <span className="text-primary-yellow">IMAGINATIVE</span>
             <span className="text-primary-red">]</span>
-            <span className="text-primary-white">_AI STUDIOS</span>
+            <span className="text-primary-white hidden xs:inline">_AI STUDIOS</span>
+            <span className="text-primary-white xs:hidden">_AI</span>
             <span className="text-primary-red animate-blink">_</span>
           </Link>
 
