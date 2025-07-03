@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 
 interface CyberpunkBackgroundProps {
   intensity?: 'low' | 'medium' | 'high';
@@ -17,6 +18,9 @@ export default function CyberpunkBackground({
   showBinaryRain = true,
   showCircuitBoard = true,
 }: CyberpunkBackgroundProps) {
+  const [mounted, setMounted] = useState(false);
+  const [binaryPatterns, setBinaryPatterns] = useState<string[][]>([]);
+
   const opacityMap = {
     low: 'opacity-5',
     medium: 'opacity-10',
@@ -24,6 +28,30 @@ export default function CyberpunkBackground({
   };
 
   const gridOpacity = opacityMap[intensity];
+
+  // Generate deterministic binary patterns on mount to avoid hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+    
+    // Generate deterministic patterns
+    const patterns: string[][] = [];
+    
+    // Create two columns of binary patterns
+    for (let col = 0; col < 2; col++) {
+      const columnPattern: string[] = [];
+      for (let i = 0; i < 20; i++) {
+        // Use deterministic pattern based on index to avoid Math.random()
+        const binaryString = Array(3).fill(0).map((_, idx) => {
+          const seed = (i * 3 + idx + col * 60) % 2;
+          return seed.toString();
+        }).join('');
+        columnPattern.push(binaryString);
+      }
+      patterns.push(columnPattern);
+    }
+    
+    setBinaryPatterns(patterns);
+  }, []);
 
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -110,18 +138,16 @@ export default function CyberpunkBackground({
       )}
 
       {/* Binary Code Rain Effect */}
-      {showBinaryRain && (
+      {showBinaryRain && mounted && (
         <>
           <div className="absolute top-0 right-10 font-mono text-xs text-primary-white/10 leading-tight hidden lg:block">
             <motion.div
               animate={{ y: [0, 800] }}
               transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
             >
-              {Array(20).fill(0).map((_, i) => (
+              {binaryPatterns[0]?.map((pattern, i) => (
                 <div key={i} className="mb-2">
-                  {Math.random() > 0.5 ? '1' : '0'}
-                  {Math.random() > 0.5 ? '1' : '0'}
-                  {Math.random() > 0.5 ? '1' : '0'}
+                  {pattern}
                 </div>
               ))}
             </motion.div>
@@ -132,11 +158,9 @@ export default function CyberpunkBackground({
               animate={{ y: [0, 800] }}
               transition={{ duration: 12, repeat: Infinity, ease: "linear", delay: 3 }}
             >
-              {Array(20).fill(0).map((_, i) => (
+              {binaryPatterns[1]?.map((pattern, i) => (
                 <div key={i} className="mb-2">
-                  {Math.random() > 0.5 ? '1' : '0'}
-                  {Math.random() > 0.5 ? '1' : '0'}
-                  {Math.random() > 0.5 ? '1' : '0'}
+                  {pattern}
                 </div>
               ))}
             </motion.div>
