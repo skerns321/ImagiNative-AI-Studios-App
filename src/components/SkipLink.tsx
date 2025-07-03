@@ -3,7 +3,7 @@
 import { scrollToSection } from '@/lib/utils/scroll';
 
 export default function SkipLink() {
-  const handleSkip = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleSkip = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     scrollToSection('main-content');
   };

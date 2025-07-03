@@ -23,13 +23,13 @@ async function checkRateLimit(ip: string): Promise<boolean> {
   const maxRequests = 5; // Max 5 requests per hour
 
   const key = `contact-rate-limit:${ip}`;
-  const requests = await kv.zrange(key, now - windowSize, now, { byScore: true, min: now - windowSize, max: now });
+  const requests = await kv.zrange(key, now - windowSize, now, { byScore: true });
 
   if (requests && requests.length >= maxRequests) {
     return false;
   }
 
-  await kv.zadd(key, now, now.toString());
+  await kv.zadd(key, { score: now, member: now.toString() });
   await kv.expire(key, 3600); // Expire after 1 hour
 
   return true;

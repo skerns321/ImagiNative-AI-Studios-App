@@ -27,7 +27,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       // Check if auth has the onAuthStateChanged method
       if (auth && typeof auth.onAuthStateChanged === 'function') {
-        const unsubscribe = auth.onAuthStateChanged((user) => {
+        const unsubscribe = auth.onAuthStateChanged((user: User | null) => {
           setCurrentUser(user);
           setLoading(false);
         });

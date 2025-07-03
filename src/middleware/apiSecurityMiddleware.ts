@@ -1,7 +1,28 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { rateLimit } from '@/lib/utils/rateLimit';
-import { validateToken } from '@/lib/utils/jwt';
+
+// Helper functions
+async function corsCheck(request: NextRequest): Promise<NextResponse | null> {
+  const origin = request.headers.get('origin');
+  const allowedOrigins = [
+    'http://localhost:3000',
+    'https://yourdomain.com'
+  ];
+  
+  if (origin && !allowedOrigins.includes(origin)) {
+    return new NextResponse(
+      JSON.stringify({ error: 'CORS policy violation' }),
+      { status: 403 }
+    );
+  }
+  return null;
+}
+
+function validateApiKey(apiKey: string): boolean {
+  // Simple API key validation - replace with your logic
+  return apiKey === process.env.API_SECRET_KEY;
+}
 
 export async function apiSecurityMiddleware(
   request: NextRequest,
@@ -21,10 +42,7 @@ export async function apiSecurityMiddleware(
 
   // Enhanced rate limiting
   const ip = request.ip ?? 'unknown';
-  const isAllowed = await rateLimit(ip, request.nextUrl.pathname, {
-    maxRequests: 100,
-    windowMs: 15 * 60 * 1000 // 15 minutes
-  });
+  const isAllowed = await rateLimit(ip, request.nextUrl.pathname, 100, 15 * 60 * 1000);
 
   if (!isAllowed) {
     return new NextResponse(

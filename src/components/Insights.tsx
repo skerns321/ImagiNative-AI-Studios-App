@@ -3,17 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { insights } from '@/lib/data/insights';
-
-// Add type definition for insights
-interface Insight {
-  id: string;
-  title: string;
-  description: string;
-  date: string;
-  image: string;
-  slug: string;
-}
+import { insights, Insight } from '@/lib/data/insights';
 
 export default function Insights() {
   // Add default empty array to prevent undefined error
@@ -39,7 +29,7 @@ export default function Insights() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {featuredInsights.map((insight) => (
             <motion.div
-              key={insight.id}
+              key={insight.slug}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}

@@ -1,7 +1,7 @@
-import { initializeApp, getApps, getApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
-import { getStorage } from "firebase/storage";
+import { initializeApp, getApps, getApp, FirebaseApp } from "firebase/app";
+import { getAuth, Auth } from "firebase/auth";
+import { getFirestore, Firestore } from "firebase/firestore";
+import { getStorage, FirebaseStorage } from "firebase/storage";
 
 // Check if Firebase environment variables are set
 const hasFirebaseConfig = 
@@ -53,7 +53,10 @@ const createDummyFirebase = () => {
 };
 
 // Initialize Firebase only if environment variables are provided
-let app, auth, db, storage;
+let app: FirebaseApp | any;
+let auth: Auth | any;
+let db: Firestore | any;
+let storage: FirebaseStorage | any;
 
 try {
   // Only attempt to initialize Firebase if we have proper config

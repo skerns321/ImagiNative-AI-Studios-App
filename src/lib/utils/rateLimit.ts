@@ -11,14 +11,14 @@ export async function rateLimit(
   const now = Date.now();
 
   try {
-    const requests = await kv.zrangebyscore(key, now - window, now);
+    const requests = await kv.zrange(key, now - window, now, { byScore: true });
     
     if (requests && requests.length >= limit) {
       await SecurityMonitor.logRateLimitViolation(ip, endpoint);
       return false;
     }
 
-    await kv.zadd(key, now, now.toString());
+    await kv.zadd(key, { score: now, member: now.toString() });
     await kv.expire(key, Math.ceil(window / 1000));
     
     return true;
