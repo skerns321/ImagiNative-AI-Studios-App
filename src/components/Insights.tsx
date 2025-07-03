@@ -20,9 +20,8 @@ export default function Insights() {
   const featuredInsights: Insight[] = insights || [];
 
   return (
-    <section id="insights" className="py-24 bg-primary-black relative">
-      
-      <div className="max-w-7xl mx-auto px-4 relative">
+    <section id="insights" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-primary-black">
+      <div className="max-w-7xl mx-auto">
         {/* Section Header with Brutalist Style */}
         <div className="mb-16 border-4 border-primary-white p-8 relative">
           <div className="absolute -top-4 -right-4 w-16 h-16 bg-primary-red" />
@@ -57,7 +56,7 @@ export default function Insights() {
               </div>
               <p className="text-primary-white/60 text-sm mb-2">{insight.date}</p>
               <h3 className="text-primary-white text-xl mb-2">{insight.title}</h3>
-              <p className="text-primary-white/80 mb-4">{insight.description}</p>
+              <p className="font-body text-primary-white/80 mb-4 leading-relaxed">{insight.description}</p>
               <Link
                 href={`/insights/${insight.slug}`}
                 className="text-primary-yellow hover:text-primary-red transition-colors"
@@ -68,18 +67,35 @@ export default function Insights() {
           ))}
         </div>
 
-        {/* View All Button with Brutalist Style */}
-        <div className="mt-16 text-center relative inline-block w-full">
-          <div className="absolute inset-0 bg-primary-red translate-x-2 translate-y-2" />
-          <Link
-            href="/insights"
-            className="relative z-10 inline-block w-full max-w-xs border-2 border-primary-white 
-                     bg-primary-black px-8 py-4 font-mono uppercase 
-                     hover:translate-x-1 hover:-translate-y-1 transition-transform"
-          >
-            View_All_Articles &gt;&gt;
-          </Link>
-        </div>
+        {/* View All Articles Button */}
+        <motion.div 
+          className="mt-8 sm:mt-12 lg:mt-16 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+        >
+          <div className="border-2 border-primary-white p-6 sm:p-8 relative max-w-2xl mx-auto">
+            <div className="absolute -top-2 -right-2 w-8 h-8 sm:w-12 sm:h-12 bg-primary-red" />
+            <h3 className="font-mono text-lg sm:text-xl lg:text-2xl text-primary-white mb-4">
+              READ_MORE_INSIGHTS?
+            </h3>
+            <p className="font-body text-sm sm:text-base text-primary-white/70 mb-6 leading-relaxed">
+              Dive deeper into our latest articles and industry insights
+            </p>
+            <Link
+              href="/insights"
+              className="inline-block bg-primary-black border-2 border-primary-white px-6 py-3 
+                       font-mono uppercase relative hover:translate-x-1 hover:-translate-y-1 
+                       transition-transform group touch-manipulation"
+            >
+              <span className="relative z-10 text-sm sm:text-base font-bold">VIEW_ALL_ARTICLES</span>
+              <div className="absolute inset-0 bg-primary-red -z-0 translate-x-2 
+                            translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3 
+                            transition-transform" />
+            </Link>
+          </div>
+        </motion.div>
       </div>
 
       {/* Brutalist Decorative Elements */}

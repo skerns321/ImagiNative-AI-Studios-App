@@ -53,7 +53,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             sizes="(max-width: 1200px) 100vw, 1200px"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary-black to-transparent" />
           <div className="absolute bottom-0 left-0 p-8">
             <div className="mb-4">
               {project.tags.map((tag) => (

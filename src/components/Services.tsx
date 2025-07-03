@@ -77,14 +77,18 @@ export default function Services() {
   return (
     <section id="services" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-primary-black">
       <div className="max-w-7xl mx-auto">
-        <motion.h2
-          className="text-2xl sm:text-3xl lg:text-4xl font-mono mb-8 sm:mb-10 lg:mb-12 border-l-4 border-primary-red pl-4"
-          initial={false}
-          whileInView={{ x: 0, opacity: 1 }}
-          viewport={{ once: true }}
-        >
-          _SERVICES
-        </motion.h2>
+        {/* Section Header with Brutalist Style */}
+        <div className="mb-16 border-4 border-primary-white p-8 relative">
+          <div className="absolute -top-4 -right-4 w-16 h-16 bg-primary-red" />
+          <h2 className="font-mono text-5xl uppercase relative z-10">
+            <span className="text-primary-red">[</span>
+            SERVICES
+            <span className="text-primary-red">]_</span>
+          </h2>
+          <p className="font-mono text-primary-white/70 mt-4">
+            &gt; SELECT * FROM services WHERE status = 'active';
+          </p>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
           {services.map((service, index) => (
@@ -105,7 +109,7 @@ export default function Services() {
                                               group-hover:text-primary-yellow transition-colors" />
                     </div>
                     <div className="flex-1">
-                      <p className="font-mono text-sm sm:text-base text-primary-white/80 
+                      <p className="font-body text-sm sm:text-base text-primary-white/80 
                                    group-hover:text-primary-white whitespace-pre-line leading-relaxed 
                                    transition-colors">
                         {Array.isArray(service.description)
@@ -138,8 +142,8 @@ export default function Services() {
             <h3 className="font-mono text-lg sm:text-xl lg:text-2xl text-primary-white mb-4">
               READY_TO_START?
             </h3>
-            <p className="font-mono text-sm sm:text-base text-primary-white/70 mb-6">
-              &gt; Let's discuss your project and bring your ideas to life
+            <p className="font-body text-sm sm:text-base text-primary-white/70 mb-6 leading-relaxed">
+              Let's discuss your project and bring your ideas to life
             </p>
             <button 
               onClick={() => {
@@ -152,7 +156,7 @@ export default function Services() {
                        font-mono uppercase relative hover:translate-x-1 hover:-translate-y-1 
                        transition-transform group touch-manipulation"
             >
-              <span className="relative z-10 text-sm sm:text-base">GET_STARTED</span>
+              <span className="relative z-10 text-sm sm:text-base font-bold">GET_STARTED</span>
               <div className="absolute inset-0 bg-primary-red -z-0 translate-x-2 
                             translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3 
                             transition-transform" />

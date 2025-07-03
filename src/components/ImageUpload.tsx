@@ -44,7 +44,7 @@ export default function ImageUpload({ onImageChange }: ImageUploadProps) {
           <button
             type="button"
             onClick={removeImage}
-            className="absolute top-2 right-2 bg-red-500 text-white p-1 rounded-full"
+            className="absolute top-2 right-2 bg-primary-red text-primary-white p-1 border border-primary-white"
           >
             <X size={20} />
           </button>
@@ -52,14 +52,14 @@ export default function ImageUpload({ onImageChange }: ImageUploadProps) {
       ) : (
         <label
           htmlFor="image"
-          className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100"
+          className="flex flex-col items-center justify-center w-full h-64 border-2 border-primary-white border-dashed cursor-pointer bg-primary-black hover:bg-primary-white/10"
         >
           <div className="flex flex-col items-center justify-center pt-5 pb-6">
-            <ImageIcon className="w-10 h-10 mb-3 text-gray-400" />
-            <p className="mb-2 text-sm text-gray-500">
+            <ImageIcon className="w-10 h-10 mb-3 text-primary-white/60" />
+            <p className="mb-2 text-sm text-primary-white/70 font-mono">
               <span className="font-semibold">Click to upload</span> or drag and drop
             </p>
-            <p className="text-xs text-gray-500">PNG, JPG or GIF (MAX. 800x400px)</p>
+            <p className="text-xs text-primary-white/50 font-mono">PNG, JPG or GIF (MAX. 800x400px)</p>
           </div>
         </label>
       )}

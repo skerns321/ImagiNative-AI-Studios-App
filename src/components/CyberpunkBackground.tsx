@@ -27,21 +27,6 @@ export default function CyberpunkBackground({
 
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden">
-      {/* Base Grid Pattern */}
-      <div className={`absolute inset-0 ${gridOpacity}`}>
-        {/* Vertical Grid Lines */}
-        <div className="absolute inset-0 grid grid-cols-8 sm:grid-cols-12 gap-2 sm:gap-4">
-          {Array(12).fill(0).map((_, i) => (
-            <div key={`v-${i}`} className="border-l border-primary-white h-full" />
-          ))}
-        </div>
-        {/* Horizontal Grid Lines */}
-        <div className="absolute inset-0 flex flex-col">
-          {Array(20).fill(0).map((_, i) => (
-            <div key={`h-${i}`} className="border-t border-primary-white h-16 sm:h-20" />
-          ))}
-        </div>
-      </div>
 
       {/* Terminal Windows */}
       {showTerminalWindows && (

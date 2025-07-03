@@ -138,12 +138,6 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-12 sm:py-16 lg:py-24 bg-primary-black relative">
-      {/* Grid Background */}
-      <div className="absolute inset-0 grid grid-cols-8 sm:grid-cols-12 gap-2 sm:gap-4 opacity-5 sm:opacity-10">
-        {Array(12).fill(0).map((_, i) => (
-          <div key={i} className="border-l border-primary-white h-full" />
-        ))}
-      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <motion.div
@@ -155,14 +149,14 @@ export default function Contact() {
         >
           {/* Contact Info */}
           <motion.div variants={itemVariants} className="space-y-6 sm:space-y-8">
-            <div className="border-2 sm:border-4 border-primary-white p-4 sm:p-6 lg:p-8 relative">
-              <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 bg-primary-red" />
-              <h2 className="font-mono text-2xl sm:text-3xl lg:text-4xl uppercase relative z-10">
+            <div className="mb-16 border-4 border-primary-white p-8 relative">
+              <div className="absolute -top-4 -right-4 w-16 h-16 bg-primary-red" />
+              <h2 className="font-mono text-5xl uppercase relative z-10">
                 <span className="text-primary-red">[</span>
-                Contact
+                CONTACT
                 <span className="text-primary-red">]_</span>
               </h2>
-              <p className="font-mono text-sm sm:text-base text-primary-white/70 mt-2 sm:mt-4 relative z-10">
+              <p className="font-mono text-primary-white/70 mt-4">
                 &gt; await sendMessage(yourIdeas);
               </p>
             </div>

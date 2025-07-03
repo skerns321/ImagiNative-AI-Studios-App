@@ -154,7 +154,7 @@ export default function WorkPageClient() {
                            group-hover:scale-110"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 
+                <div className="absolute inset-0 bg-gradient-to-t from-primary-black 
                               to-transparent opacity-0 group-hover:opacity-100 
                               transition-opacity duration-300">
                   <div className="absolute bottom-0 left-0 p-3 sm:p-4">
@@ -231,7 +231,7 @@ export default function WorkPageClient() {
                 READY_TO_START_YOUR_PROJECT?
               </h3>
               <Link
-                href="/contact"
+                href="/#contact"
                 className="inline-block bg-primary-black border-2 border-primary-white px-6 py-3 
                          font-mono uppercase relative hover:translate-x-1 hover:-translate-y-1 
                          transition-transform group touch-manipulation"

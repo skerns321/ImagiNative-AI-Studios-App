@@ -119,7 +119,7 @@ export default function Work() {
   };
 
   return (
-    <section id="work" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
+    <section id="work" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-primary-black">
       <div className="max-w-7xl mx-auto">
         <motion.div
           variants={containerVariants}
@@ -127,9 +127,18 @@ export default function Work() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-mono mb-8 sm:mb-10 lg:mb-12 text-primary-white">
-            _FEATURED_WORK
-          </h2>
+          {/* Section Header with Brutalist Style */}
+          <div className="mb-16 border-4 border-primary-white p-8 relative">
+            <div className="absolute -top-4 -right-4 w-16 h-16 bg-primary-red" />
+            <h2 className="font-mono text-5xl uppercase relative z-10">
+              <span className="text-primary-red">[</span>
+              FEATURED WORK
+              <span className="text-primary-red">]_</span>
+            </h2>
+            <p className="font-mono text-primary-white/70 mt-4">
+              &gt; SELECT * FROM projects ORDER BY created_date DESC LIMIT 6;
+            </p>
+          </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {projects.slice(0, 6).map((project, index) => (
@@ -152,7 +161,7 @@ export default function Work() {
                              group-hover:scale-110"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary-black 
                                 to-transparent opacity-0 group-hover:opacity-100 
                                 transition-opacity duration-300">
                     <div className="absolute bottom-0 left-0 p-3 sm:p-4 lg:p-6">
@@ -189,17 +198,26 @@ export default function Work() {
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
         >
-          <Link
-            href="/work"
-            className="inline-block bg-primary-black border-2 border-primary-white px-6 py-3 
-                     font-mono uppercase relative hover:translate-x-1 hover:-translate-y-1 
-                     transition-transform group touch-manipulation"
-          >
-            <span className="relative z-10 text-sm sm:text-base text-primary-black">VIEW_ALL_WORK</span>
-            <div className="absolute inset-0 bg-primary-yellow -z-0 translate-x-2 
-                          translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3 
-                          transition-transform" />
-          </Link>
+          <div className="border-2 border-primary-white p-6 sm:p-8 relative max-w-2xl mx-auto">
+            <div className="absolute -top-2 -right-2 w-8 h-8 sm:w-12 sm:h-12 bg-primary-red" />
+            <h3 className="font-mono text-lg sm:text-xl lg:text-2xl text-primary-white mb-4">
+              EXPLORE_MORE_WORK?
+            </h3>
+            <p className="font-body text-sm sm:text-base text-primary-white/70 mb-6 leading-relaxed">
+              Browse our complete portfolio and case studies
+            </p>
+            <Link
+              href="/work"
+              className="inline-block bg-primary-black border-2 border-primary-white px-6 py-3 
+                       font-mono uppercase relative hover:translate-x-1 hover:-translate-y-1 
+                       transition-transform group touch-manipulation"
+            >
+              <span className="relative z-10 text-sm sm:text-base font-bold">VIEW_ALL_WORK</span>
+              <div className="absolute inset-0 bg-primary-red -z-0 translate-x-2 
+                            translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3 
+                            transition-transform" />
+            </Link>
+          </div>
         </motion.div>
       </div>
       
@@ -219,7 +237,7 @@ export default function Work() {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-[#0a0a0a] 
+              className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-primary-black 
                          border-2 border-primary-white"
               onClick={(e) => e.stopPropagation()}
             >
@@ -240,7 +258,7 @@ export default function Work() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0a0a0a]"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary-black"></div>
               </div>
               
               <div className="p-4 sm:p-6 lg:p-8">

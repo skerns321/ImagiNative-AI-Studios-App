@@ -70,7 +70,7 @@ export default function Home() {
           <Hero />
         </section>
 
-        <div className="pt-20">
+        <div>
           <Suspense fallback={<SectionLoading />}>
             <section id="work">
               <Work />
