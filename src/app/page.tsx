@@ -47,6 +47,10 @@ const Testimonials = dynamic(() => import('@/components/Testimonials'), {
   ssr: false,
   loading: () => <SectionLoading />
 });
+const ScrollToTop = dynamic(() => import('@/components/ScrollToTop'), {
+  ssr: false,
+  loading: () => null
+});
 
 export default function Home() {
   return (
@@ -110,6 +114,9 @@ export default function Home() {
       </main>
       
       <Footer />
+      
+      {/* Scroll to Top Button */}
+      <ScrollToTop />
     </>
   );
 }

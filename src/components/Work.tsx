@@ -119,7 +119,7 @@ export default function Work() {
   };
 
   return (
-    <section id="work" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-primary-black">
+    <section id="work" className="py-8 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-primary-black">
       <div className="max-w-7xl mx-auto">
         <motion.div
           variants={containerVariants}

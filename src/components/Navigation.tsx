@@ -125,16 +125,17 @@ export default function Navigation() {
             ))}
           </div>
 
-          {/* Mobile Menu Button - Shows on small screens */}
+          {/* Mobile Menu Button - Shows on small screens - Enhanced touch target */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-primary-white hover:text-primary-red 
+            className="md:hidden p-3 text-primary-white hover:text-primary-red 
                      border-2 border-primary-white hover:border-primary-red transition-colors
-                     touch-target rounded-sm"
+                     min-w-[44px] min-h-[44px] flex items-center justify-center
+                     rounded-sm touch-manipulation active:scale-95"
             aria-label={isOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isOpen}
           >
-            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
 
@@ -169,10 +170,11 @@ export default function Navigation() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.05, duration: 0.2 }}
                       onClick={() => handleMenuClick(item)}
-                      className="block w-full text-left py-4 px-4 font-mono 
-                               text-sm sm:text-base text-primary-white hover:text-primary-red 
-                               hover:bg-primary-white/5 transition-colors touch-target
-                               border-l-2 border-transparent hover:border-primary-red"
+                      className="block w-full text-left py-5 px-6 font-mono 
+                               text-base sm:text-lg text-primary-white hover:text-primary-red 
+                               hover:bg-primary-white/5 transition-colors touch-manipulation
+                               border-l-2 border-transparent hover:border-primary-red
+                               min-h-[56px] flex items-center active:bg-primary-white/10"
                     >
                       <span className="flex items-center">
                         <span className="text-primary-red mr-2">&gt;</span>
@@ -194,8 +196,9 @@ export default function Navigation() {
                       </div>
                       <button
                         onClick={() => handleMenuClick('CONTACT')}
-                        className="w-full py-3 px-4 bg-primary-red text-primary-white font-mono text-sm
-                                 hover:bg-primary-red/80 transition-colors touch-target
+                        className="w-full py-4 px-6 bg-primary-red text-primary-white font-mono text-base
+                                 hover:bg-primary-red/80 transition-colors touch-manipulation
+                                 min-h-[48px] active:bg-primary-red/70
                                  border-2 border-primary-red hover:border-primary-white
                                  relative group overflow-hidden"
                       >

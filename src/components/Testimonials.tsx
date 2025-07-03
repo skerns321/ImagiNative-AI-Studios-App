@@ -7,7 +7,7 @@ import { testimonials } from '@/lib/data/testimonials';
 
 const Testimonials = () => {
   return (
-    <section id="testimonials" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-primary-black">
+    <section id="testimonials" className="py-8 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-primary-black">
       <div className="max-w-7xl mx-auto">
         {/* Section Header with Brutalist Style */}
         <div className="mb-16 border-4 border-primary-white p-8 relative">

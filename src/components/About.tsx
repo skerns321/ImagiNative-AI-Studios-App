@@ -6,7 +6,7 @@ import { teamMembers } from '@/lib/data/team';
 
 export default function About() {
   return (
-    <section id="about" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-primary-black">
+    <section id="about" className="py-8 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-primary-black">
       <div className="max-w-7xl mx-auto">
         {/* Section Header with Brutalist Style */}
         <div className="mb-16 border-4 border-primary-white p-8 relative">
@@ -21,10 +21,10 @@ export default function About() {
           </p>
         </div>
         <div className="mb-10">
-          <p className="font-body text-primary-white/80 mb-4 text-lg leading-relaxed">
+          <p className="font-body text-primary-white/80 mb-4 text-base sm:text-lg leading-relaxed">
             ImagiNative AI Studios is a forward-thinking digital innovation studio dedicated to blending creativity with cutting-edge technology. Our mission is to empower brands and individuals to realize their boldest ideas through the power of artificial intelligence, design, and strategic thinking. With a passion for pushing boundaries, we craft digital experiences that are not only visually stunning but also deeply impactful.
           </p>
-          <p className="font-body text-primary-white/80 text-lg leading-relaxed">
+          <p className="font-body text-primary-white/80 text-base sm:text-lg leading-relaxed">
             Our multidisciplinary team brings together expertise in AI, design, development, and strategy to deliver solutions that drive real results. Whether you're a startup looking to disrupt your industry or an established brand seeking a fresh perspective, ImagiNative AI Studios is your partner in digital transformation. We believe in the power of collaboration, curiosity, and relentless innovation to shape the future.
           </p>
         </div>
@@ -60,10 +60,10 @@ export default function About() {
 
                 {/* Member Info */}
                 <div className="space-y-2">
-                  <h3 className="font-mono text-lg text-primary-white">
+                  <h3 className="font-mono text-lg sm:text-xl text-primary-white">
                     {member.name}
                   </h3>
-                  <p className="font-body text-sm text-primary-white/70 leading-relaxed">
+                  <p className="font-body text-sm sm:text-base text-primary-white/70 leading-relaxed">
                     {member.description}
                   </p>
                 </div>

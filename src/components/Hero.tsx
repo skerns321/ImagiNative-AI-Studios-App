@@ -110,10 +110,10 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-mono text-primary-white mb-2 sm:mb-4 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-mono text-primary-white mb-3 sm:mb-4 leading-tight">
               {heroImages[currentIndex].title}
             </h1>
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl font-mono text-primary-white/80 max-w-3xl">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-mono text-primary-white/80 max-w-3xl">
               {heroImages[currentIndex].description}
             </p>
           </motion.div>
@@ -124,12 +124,13 @@ export default function Hero() {
       <div className="absolute bottom-12 sm:bottom-16 lg:bottom-20 left-0 right-0 flex justify-center items-center gap-2 sm:gap-4 z-10 px-4">
         <button
           onClick={handlePrevious}
-          className="p-2 sm:p-3 border-2 border-primary-white text-primary-white 
+          className="p-3 sm:p-4 border-2 border-primary-white text-primary-white 
                    hover:border-primary-red hover:text-primary-red transition-colors
-                   flex-shrink-0"
+                   flex-shrink-0 min-w-[44px] min-h-[44px] flex items-center justify-center
+                   touch-manipulation active:scale-95"
           aria-label="Previous slide"
         >
-          <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
+          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7" />
         </button>
 
         {/* Dots */}
@@ -141,21 +142,27 @@ export default function Hero() {
                 setIsAutoPlaying(false);
                 setCurrentIndex(index);
               }}
-              className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors
+              className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-colors
+                       min-w-[44px] min-h-[44px] flex items-center justify-center
+                       touch-manipulation active:scale-90
                        ${currentIndex === index ? 'bg-primary-red' : 'bg-primary-white/50 hover:bg-primary-white'}`}
               aria-label={`Go to slide ${index + 1}`}
-            />
+            >
+              <span className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors
+                            ${currentIndex === index ? 'bg-primary-red' : 'bg-primary-white/50'}`} />
+            </button>
           ))}
         </div>
 
         <button
           onClick={handleNext}
-          className="p-2 sm:p-3 border-2 border-primary-white text-primary-white 
+          className="p-3 sm:p-4 border-2 border-primary-white text-primary-white 
                    hover:border-primary-red hover:text-primary-red transition-colors
-                   flex-shrink-0"
+                   flex-shrink-0 min-w-[44px] min-h-[44px] flex items-center justify-center
+                   touch-manipulation active:scale-95"
           aria-label="Next slide"
         >
-          <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
+          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7" />
         </button>
       </div>
 
