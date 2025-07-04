@@ -38,10 +38,10 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['IBM Plex Sans', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-        mono: ['SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Fira Code', 'Consolas', 'Courier New', 'ui-monospace', 'SFMono-Regular', 'monospace'],
-        heading: ['Space Grotesk', 'system-ui', '-apple-system', 'sans-serif'],
-        body: ['IBM Plex Sans', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['var(--font-inter)', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        mono: ['var(--font-jetbrains-mono)', 'ui-monospace', 'SFMono-Regular', 'Monaco', 'Consolas', 'monospace'],
+        heading: ['var(--font-inter)', 'system-ui', '-apple-system', 'sans-serif'],
+        body: ['var(--font-inter)', 'system-ui', '-apple-system', 'sans-serif'],
       },
       fontSize: {
         'xs': ['0.75rem', { lineHeight: '1rem' }],

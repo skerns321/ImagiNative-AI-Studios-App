@@ -1,26 +1,22 @@
-import { Montserrat, Roboto, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Metadata } from "next";
 import Monitoring from '@/components/Monitoring';
 
-const montserrat = Montserrat({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  variable: "--font-montserrat",
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-inter",
   display: "swap",
   preload: true,
 });
 
-const roboto = Roboto({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-roboto",
-  display: "swap",
-});
-
 const jetbrainsMono = JetBrains_Mono({ 
   subsets: ['latin'],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-jetbrains-mono",
   display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -90,8 +86,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${montserrat.variable} ${roboto.variable}`} suppressHydrationWarning>
-      <body className={jetbrainsMono.className}>
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
+      <body className={inter.className}>
         {process.env.NODE_ENV === 'production' && <Monitoring />}
         {children}
       </body>

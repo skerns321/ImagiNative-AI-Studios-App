@@ -1,7 +1,19 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Twitter, ArrowUp } from 'lucide-react';
+import { Github, Linkedin, Twitter, ArrowUp, Facebook, Instagram } from 'lucide-react';
+
+// Custom TikTok Icon Component
+const TikTokIcon = ({ className }: { className?: string }) => (
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M19.321 5.562a5.124 5.124 0 0 1-.443-.258 6.228 6.228 0 0 1-1.137-.966c-.849-.849-1.288-1.989-1.288-3.338h-3.28v13.367c0 2.48-2.016 4.496-4.496 4.496s-4.496-2.016-4.496-4.496c0-2.48 2.016-4.496 4.496-4.496.247 0 .487.02.722.059v-3.366a7.842 7.842 0 0 0-.722-.035C4.064 6.529 0 10.593 0 15.506s4.064 8.977 8.977 8.977 8.977-4.064 8.977-8.977V9.848a9.65 9.65 0 0 0 5.564 1.786V8.388a6.166 6.166 0 0 1-4.197-2.826z"/>
+  </svg>
+);
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -11,9 +23,12 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: Github, href: 'https://github.com', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
+    { icon: Facebook, href: 'https://facebook.com/imaginativestudios', label: 'Facebook' },
+    { icon: Twitter, href: 'https://twitter.com/imaginativestudios', label: 'X (Twitter)' },
+    { icon: Instagram, href: 'https://instagram.com/imaginativestudios', label: 'Instagram' },
+    { icon: Linkedin, href: 'https://linkedin.com/company/imaginativestudios', label: 'LinkedIn' },
+    { icon: Github, href: 'https://github.com/imaginativestudios', label: 'GitHub' },
+    { icon: TikTokIcon, href: 'https://tiktok.com/@imaginativestudios', label: 'TikTok' },
   ];
 
   const quickLinks = [
@@ -48,7 +63,7 @@ export default function Footer() {
               <span className="text-primary-white">IMAGI</span>
               <span className="text-primary-yellow">NATIVE</span>
               <span className="text-primary-red">]</span>
-              <span className="text-primary-white">_AI STUDIOS</span>
+              <span className="text-primary-white">_STUDIOS</span>
             </div>
             <p className="text-xs sm:text-sm text-primary-white/70 font-mono leading-relaxed max-w-xs">
               &gt; Transforming ideas into digital reality through innovative AI solutions 
@@ -56,7 +71,7 @@ export default function Footer() {
             </p>
             
             {/* Social Links */}
-            <div className="flex gap-3 sm:gap-4 mt-4 sm:mt-6">
+            <div className="grid grid-cols-3 gap-3 sm:gap-4 mt-4 sm:mt-6 max-w-[180px]">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
@@ -166,7 +181,7 @@ export default function Footer() {
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <div className="text-center sm:text-left">
               <p className="font-mono text-xs text-primary-white/50">
-                © {currentYear} IMAGINATIVE STUDIOS. All rights reserved.
+                © {currentYear} Imaginative Studios. All rights reserved.
               </p>
               <p className="font-mono text-xs text-primary-white/30 mt-1">
                 &gt; Built with passion and innovation_
