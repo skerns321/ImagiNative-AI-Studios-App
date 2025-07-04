@@ -1,7 +1,7 @@
 import { initializeApp, getApps, getApp, FirebaseApp } from "firebase/app";
-import { getAuth, Auth } from "firebase/auth";
-import { getFirestore, Firestore } from "firebase/firestore";
-import { getStorage, FirebaseStorage } from "firebase/storage";
+import type { Auth } from "firebase/auth";
+import type { Firestore } from "firebase/firestore";
+import type { FirebaseStorage } from "firebase/storage";
 
 // Check if Firebase environment variables are set
 const hasFirebaseConfig = 
@@ -52,34 +52,52 @@ const createDummyFirebase = () => {
   return { dummyApp, dummyAuth, dummyFirestore, dummyStorage };
 };
 
-// Initialize Firebase only if environment variables are provided
+// Lazy loading functions for Firebase services
+const getFirebaseAuth = async (): Promise<Auth> => {
+  if (hasFirebaseConfig) {
+    const { getAuth } = await import("firebase/auth");
+    const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+    return getAuth(app);
+  }
+  return createDummyFirebase().dummyAuth as Auth;
+};
+
+const getFirebaseFirestore = async (): Promise<Firestore> => {
+  if (hasFirebaseConfig) {
+    const { getFirestore } = await import("firebase/firestore");
+    const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+    return getFirestore(app);
+  }
+  return createDummyFirebase().dummyFirestore as Firestore;
+};
+
+const getFirebaseStorage = async (): Promise<FirebaseStorage> => {
+  if (hasFirebaseConfig) {
+    const { getStorage } = await import("firebase/storage");
+    const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+    return getStorage(app);
+  }
+  return createDummyFirebase().dummyStorage as FirebaseStorage;
+};
+
+// Initialize Firebase app only
 let app: FirebaseApp | any;
+
+try {
+  if (hasFirebaseConfig) {
+    app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+  } else {
+    console.warn("Firebase environment variables are missing. Using dummy implementation.");
+    app = createDummyFirebase().dummyApp;
+  }
+} catch (error) {
+  console.error("Failed to initialize Firebase:", error);
+  app = createDummyFirebase().dummyApp;
+}
+
+// Legacy exports for backward compatibility (will be lazy loaded)
 let auth: Auth | any;
 let db: Firestore | any;
 let storage: FirebaseStorage | any;
 
-try {
-  // Only attempt to initialize Firebase if we have proper config
-  if (hasFirebaseConfig) {
-    app = getApps().length ? getApp() : initializeApp(firebaseConfig);
-    auth = getAuth(app);
-    db = getFirestore(app);
-    storage = getStorage(app);
-  } else {
-    console.warn("Firebase environment variables are missing. Using dummy implementation.");
-    const { dummyApp, dummyAuth, dummyFirestore, dummyStorage } = createDummyFirebase();
-    app = dummyApp;
-    auth = dummyAuth;
-    db = dummyFirestore;
-    storage = dummyStorage;
-  }
-} catch (error) {
-  console.error("Failed to initialize Firebase:", error);
-  const { dummyApp, dummyAuth, dummyFirestore, dummyStorage } = createDummyFirebase();
-  app = dummyApp;
-  auth = dummyAuth;
-  db = dummyFirestore;
-  storage = dummyStorage;
-}
-
-export { app, auth, db, storage };
+export { app, auth, db, storage, getFirebaseAuth, getFirebaseFirestore, getFirebaseStorage };

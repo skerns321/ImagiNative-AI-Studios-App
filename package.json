@@ -17,7 +17,7 @@
     "@sendgrid/mail": "^8.1.5",
     "@vercel/kv": "^3.0.0",
     "ai": "^4.3.16",
-    "date-fns": "^3.6.0",
+    "dayjs": "^1.11.13",
     "firebase": "^10.13.0",
     "framer-motion": "^11.18.2",
     "isomorphic-dompurify": "^2.22.0",

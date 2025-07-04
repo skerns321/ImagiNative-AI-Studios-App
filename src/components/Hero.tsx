@@ -97,10 +97,10 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
-            <h1 className="text-fluid-6xl font-mono text-primary-white mb-3 sm:mb-4 leading-tight">
+            <h1 className="text-fluid-4xl font-mono text-primary-white mb-3 sm:mb-4 leading-tight">
               {heroImages[currentIndex].title}
             </h1>
-            <p className="text-fluid-xl font-mono text-primary-white/80 max-w-3xl">
+            <p className="text-fluid-lg font-mono text-primary-white/80 max-w-3xl">
               {heroImages[currentIndex].description}
             </p>
           </motion.div>

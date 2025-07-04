@@ -5,18 +5,22 @@ import Monitoring from '@/components/Monitoring';
 
 const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "600", "700"],
   variable: "--font-montserrat",
+  display: "swap",
+  preload: true,
 });
 
 const roboto = Roboto({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "700"],
+  weight: ["400", "700"],
   variable: "--font-roboto",
+  display: "swap",
 });
 
 const jetbrainsMono = JetBrains_Mono({ 
-  subsets: ['latin'] 
+  subsets: ['latin'],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -88,7 +92,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${montserrat.variable} ${roboto.variable}`} suppressHydrationWarning>
       <body className={jetbrainsMono.className}>
-        <Monitoring />
+        {process.env.NODE_ENV === 'production' && <Monitoring />}
         {children}
       </body>
     </html>

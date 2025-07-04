@@ -6,6 +6,16 @@ import { MonitoringService } from '@/lib/services/monitoring';
 export async function middleware(request: NextRequest) {
   const startTime = performance.now();
 
+  // Skip expensive operations in development
+  if (process.env.NODE_ENV !== 'production') {
+    const response = NextResponse.next();
+    
+    // Still add security headers in development
+    addSecurityHeaders(response);
+    
+    return response;
+  }
+
   // Check for suspicious headers
   const suspiciousHeaders = ['x-middleware-subrequest', 'x-powered-by'];
   const hasBlockedHeaders = suspiciousHeaders.some(header => 
@@ -34,6 +44,12 @@ export async function middleware(request: NextRequest) {
   }
 
   // Add security headers
+  addSecurityHeaders(response);
+
+  return response;
+}
+
+function addSecurityHeaders(response: NextResponse) {
   const headers = response.headers;
 
   // Prevent XSS attacks
@@ -73,8 +89,6 @@ export async function middleware(request: NextRequest) {
     'Permissions-Policy',
     'camera=(), microphone=(), geolocation=(), interest-cohort=()'
   );
-
-  return response;
 }
 
 export const config = {
