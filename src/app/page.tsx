@@ -15,10 +15,6 @@ const ScrollProgress = dynamic(() => import('@/components/ScrollProgress'), {
   ssr: false,
   loading: () => null
 });
-const SectionIndicator = dynamic(() => import('@/components/SectionIndicator'), { 
-  ssr: false,
-  loading: () => null
-});
 
 
 
@@ -60,7 +56,6 @@ export default function Home() {
       
       {/* Client-side only components */}
       <ScrollProgress />
-      <SectionIndicator />
       
       {/* Cyberpunk Background */}
       <CyberpunkBackground intensity="low" />
