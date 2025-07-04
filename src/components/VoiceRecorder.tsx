@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useDeepgram } from '../lib/contexts/DeepgramContext';
-import { addDocument } from '../lib/firebase/firebaseUtils';
+// Firebase removed - transcript can be saved to localStorage or sent via form
 import { motion } from 'framer-motion';
 
 export default function VoiceRecorder() {
@@ -18,12 +18,14 @@ export default function VoiceRecorder() {
     disconnectFromDeepgram();
     setIsRecording(false);
     
-    // Save the note to Firebase
+    // Save the note to localStorage for now
     if (realtimeTranscript) {
-      await addDocument('notes', {
+      const notes = JSON.parse(localStorage.getItem('voiceNotes') || '[]');
+      notes.push({
         text: realtimeTranscript,
         timestamp: new Date().toISOString(),
       });
+      localStorage.setItem('voiceNotes', JSON.stringify(notes));
     }
   };
 

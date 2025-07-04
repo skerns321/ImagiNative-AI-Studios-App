@@ -1,9 +1,13 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { signInWithPopup, GoogleAuthProvider, signOut as firebaseSignOut } from "firebase/auth";
-import { User } from "firebase/auth";
-import { auth } from "../firebase/firebase";
+
+// Simple user interface since we removed Firebase
+interface User {
+  uid: string;
+  email: string | null;
+  displayName: string | null;
+}
 
 interface AuthContextType {
   currentUser: User | null;
@@ -24,35 +28,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    try {
-      // Check if auth has the onAuthStateChanged method
-      if (auth && typeof auth.onAuthStateChanged === 'function') {
-        const unsubscribe = auth.onAuthStateChanged((user: User | null) => {
-          setCurrentUser(user);
-          setLoading(false);
-        });
-        
-        return () => unsubscribe();
-      } else {
-        // If auth is a dummy implementation, just set loading to false
-        console.warn('Firebase auth not properly initialized. Authentication features will not work.');
-        setLoading(false);
-      }
-    } catch (error) {
-      console.error('Error in auth state listener:', error);
-      setLoading(false);
-    }
+    // Since we removed Firebase, just set loading to false
+    // You can implement authentication with NextAuth.js or another provider
+    setLoading(false);
   }, []);
 
-  // Dummy signInWithGoogle function to prevent errors
+  // Placeholder functions - implement with NextAuth.js or other auth provider
   const signInWithGoogle = async () => {
-    console.warn('Firebase auth not properly initialized. Sign in with Google will not work.');
+    console.log('Auth not implemented yet - consider using NextAuth.js');
     return Promise.resolve();
   };
 
-  // Dummy signOut function to prevent errors
   const signOut = async () => {
-    console.warn('Firebase auth not properly initialized. Sign out will not work.');
+    console.log('Sign out not implemented yet');
+    setCurrentUser(null);
     return Promise.resolve();
   };
 

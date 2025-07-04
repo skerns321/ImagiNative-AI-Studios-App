@@ -68,20 +68,25 @@ export default function Contact() {
       setErrors({});
       setIsSubmitting(true);
       
-      // Simulating API call - temporarily disable Firebase
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Submit to Netlify Forms
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
+          'form-name': 'contact',
+          name: formData.name,
+          email: formData.email,
+          company: formData.company || '',
+          message: formData.message,
+          services: formData.services?.join(', ') || 'None selected',
+        }).toString(),
+      });
       
-      /* 
-      // Firebase implementation for when env vars are set up
-      try {
-        await addDoc(collection(db, 'contactSubmissions'), {
-          ...formData,
-          createdAt: serverTimestamp(),
-        });
-      } catch (firebaseError) {
-        console.error('Error submitting form to Firebase:', firebaseError);
+      if (!response.ok) {
+        throw new Error('Failed to submit form');
       }
-      */
       
       // Success state
       setIsSuccess(true);
@@ -107,6 +112,12 @@ export default function Contact() {
           formattedErrors[path] = err.message;
         });
         setErrors(formattedErrors);
+      } else {
+        // Handle form submission errors
+        setErrors({ 
+          email: 'Failed to send message. Please try again or contact us directly.' 
+        });
+        console.error('Form submission error:', error);
       }
     } finally {
       setIsSubmitting(false);
@@ -196,7 +207,19 @@ export default function Contact() {
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+              <form 
+                name="contact" 
+                method="POST" 
+                data-netlify="true" 
+                data-netlify-honeypot="bot-field"
+                onSubmit={handleSubmit} 
+                className="space-y-4 sm:space-y-6"
+              >
+                {/* Netlify spam protection */}
+                <input type="hidden" name="form-name" value="contact" />
+                <p style={{ display: 'none' }}>
+                  <label>Don't fill this out: <input name="bot-field" /></label>
+                </p>
                 {/* Name Field */}
                 <div className="relative">
                   <div className="absolute inset-0 bg-primary-red translate-x-1 translate-y-1" />
