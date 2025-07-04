@@ -30,7 +30,7 @@ export function useResponsive() {
 
   // Return default values until mounted to prevent hydration mismatch
   if (!mounted) {
-    return { isMobile: false, isTablet: false, isDesktop: true };
+    return { isMobile: true, isTablet: false, isDesktop: false };
   }
 
   return { isMobile, isTablet, isDesktop };
