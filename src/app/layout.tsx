@@ -24,12 +24,12 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ImagiNative AI Studios | Digital Agency",
+  title: "ImagiNative Studios | Digital Agency",
   description: "Innovative digital solutions for forward-thinking businesses",
   keywords: ["AI", "Design", "Development", "Digital Agency", "Innovation"],
-  authors: [{ name: "ImagiNative AI Studios" }],
-  creator: "ImagiNative AI Studios",
-  publisher: "ImagiNative AI Studios",
+  authors: [{ name: "ImagiNative Studios" }],
+  creator: "ImagiNative Studios",
+  publisher: "ImagiNative Studios",
   metadataBase: new URL("https://imaginative-aistudios.ai"),
   formatDetection: {
     email: false,
@@ -40,15 +40,15 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://imaginative-ai.com",
-    title: "ImagiNative AI Studios",
+    title: "ImagiNative Studios",
     description: "Innovative digital solutions for forward-thinking businesses",
-    siteName: "ImagiNative AI Studios",
+    siteName: "ImagiNative Studios",
     images: [
       {
         url: "/og-image.svg",
         width: 1200,
         height: 630,
-        alt: "ImagiNative AI Studios - Digital Agency",
+        alt: "ImagiNative Studios - Digital Agency",
       },
     ],
   },

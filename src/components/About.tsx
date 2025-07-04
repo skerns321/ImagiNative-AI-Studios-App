@@ -22,10 +22,10 @@ export default function About() {
         </div>
         <div className="mb-10">
           <p className="font-body text-primary-white/80 mb-4 text-base sm:text-lg leading-relaxed">
-            ImagiNative AI Studios is a forward-thinking digital innovation studio dedicated to blending creativity with cutting-edge technology. Our mission is to empower brands and individuals to realize their boldest ideas through the power of artificial intelligence, design, and strategic thinking. With a passion for pushing boundaries, we craft digital experiences that are not only visually stunning but also deeply impactful.
+            ImagiNative Studios is a forward-thinking digital innovation studio dedicated to blending creativity with cutting-edge technology. Our mission is to empower brands and individuals to realize their boldest ideas through the power of artificial intelligence, design, and strategic thinking. With a passion for pushing boundaries, we craft digital experiences that are not only visually stunning but also deeply impactful.
           </p>
           <p className="font-body text-primary-white/80 text-base sm:text-lg leading-relaxed">
-            Our multidisciplinary team brings together expertise in AI, design, development, and strategy to deliver solutions that drive real results. Whether you're a startup looking to disrupt your industry or an established brand seeking a fresh perspective, ImagiNative AI Studios is your partner in digital transformation. We believe in the power of collaboration, curiosity, and relentless innovation to shape the future.
+            Our multidisciplinary team brings together expertise in AI, design, development, and strategy to deliver solutions that drive real results. Whether you're a startup looking to disrupt your industry or an established brand seeking a fresh perspective, ImagiNative Studios is your partner in digital transformation. We believe in the power of collaboration, curiosity, and relentless innovation to shape the future.
           </p>
         </div>
         

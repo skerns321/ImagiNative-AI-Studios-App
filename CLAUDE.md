@@ -14,7 +14,7 @@ npm run generate-images  # Generate placeholder images using AI
 
 ## Architecture Overview
 
-This is a **Next.js 14 App Router** application for ImagiNative AI Studios - a digital agency platform with comprehensive AI integrations.
+This is a **Next.js 14 App Router** application for ImagiNative Studios - a digital agency platform with comprehensive AI integrations.
 
 ### Technology Stack
 

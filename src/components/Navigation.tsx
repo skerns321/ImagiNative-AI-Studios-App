@@ -74,13 +74,13 @@ export default function Navigation() {
             className="font-mono relative group flex-shrink-0 
                      text-fluid-base
                      hover:scale-105 transition-transform duration-200"
-            aria-label="ImagiNative AI Studios Home"
+            aria-label="ImagiNative Studios Home"
           >
             <span className="text-primary-red">[</span>
             <span className="text-primary-yellow">IMAGINATIVE</span>
             <span className="text-primary-red">]</span>
-            <span className="text-primary-white hidden xs:inline">_AI STUDIOS</span>
-            <span className="text-primary-white xs:hidden">_AI</span>
+            <span className="text-primary-white hidden xs:inline">_STUDIOS</span>
+            <span className="text-primary-white xs:hidden">_S</span>
             <span className="text-primary-red animate-blink">_</span>
           </Link>
 

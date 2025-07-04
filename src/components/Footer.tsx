@@ -166,7 +166,7 @@ export default function Footer() {
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <div className="text-center sm:text-left">
               <p className="font-mono text-xs text-primary-white/50">
-                © {currentYear} IMAGINATIVE AI STUDIOS. All rights reserved.
+                © {currentYear} IMAGINATIVE STUDIOS. All rights reserved.
               </p>
               <p className="font-mono text-xs text-primary-white/30 mt-1">
                 &gt; Built with passion and innovation_
