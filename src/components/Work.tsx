@@ -132,7 +132,7 @@ export default function Work() {
             <div className="absolute -top-4 -right-4 w-16 h-16 bg-primary-red" />
             <h2 className="font-mono text-fluid-4xl uppercase relative z-10">
               <span className="text-primary-red">[</span>
-              FEATURED WORK
+              WORK
               <span className="text-primary-red">]_</span>
             </h2>
             <p className="font-mono text-fluid-sm text-primary-white/70 mt-4">
@@ -190,35 +190,6 @@ export default function Work() {
           </div>
         </motion.div>
 
-        {/* View All Projects Button */}
-        <motion.div 
-          className="mt-8 sm:mt-12 lg:mt-16 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-        >
-          <div className="border-2 border-primary-white p-6 sm:p-8 relative max-w-2xl mx-auto">
-            <div className="absolute -top-2 -right-2 w-8 h-8 sm:w-12 sm:h-12 bg-primary-red" />
-            <h3 className="font-mono text-lg sm:text-xl lg:text-2xl text-primary-white mb-4">
-              EXPLORE_MORE_WORK?
-            </h3>
-            <p className="font-body text-sm sm:text-base text-primary-white/70 mb-6 leading-relaxed">
-              Browse our complete portfolio and case studies
-            </p>
-            <Link
-              href="/work"
-              className="inline-block bg-primary-black border-2 border-primary-white px-6 py-3 
-                       font-mono uppercase relative hover:translate-x-1 hover:-translate-y-1 
-                       transition-transform group touch-manipulation"
-            >
-              <span className="relative z-10 text-sm sm:text-base font-bold">VIEW_ALL_WORK</span>
-              <div className="absolute inset-0 bg-primary-red -z-0 translate-x-2 
-                            translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3 
-                            transition-transform" />
-            </Link>
-          </div>
-        </motion.div>
       </div>
       
       {/* Project Details Modal */}

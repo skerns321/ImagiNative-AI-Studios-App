@@ -5,7 +5,6 @@ import SectionLoading from '@/components/SectionLoading';
 
 // Import static components
 import SkipLink from '@/components/SkipLink';
-import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import Footer from '@/components/Footer';
 import CyberpunkBackground from '@/components/CyberpunkBackground';
@@ -52,7 +51,6 @@ export default function Home() {
   return (
     <>
       <SkipLink />
-      <Navigation />
       
       {/* Client-side only components */}
       <ScrollProgress />

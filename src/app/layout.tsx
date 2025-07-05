@@ -2,6 +2,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Metadata } from "next";
 import Monitoring from '@/components/Monitoring';
+import Navigation from '@/components/Navigation';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -89,6 +90,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
       <body className={inter.className}>
         {process.env.NODE_ENV === 'production' && <Monitoring />}
+        <Navigation />
         {children}
       </body>
     </html>

@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { Github, Linkedin, Twitter, Facebook, Instagram } from 'lucide-react';
 
 // Custom TikTok Icon Component
@@ -35,53 +36,57 @@ export default function Footer() {
   ];
 
   const services = [
-    'Web Development',
-    'AI Solutions',
-    'Social Media',
-    'Branding',
+    { name: 'Web Development', href: '/services/web-development' },
+    { name: 'AI Solutions', href: '/services/ai-business-solutions' },
+    { name: 'Social Media', href: '/services/social-media-management' },
+    { name: 'Branding', href: '/services/branding-and-marketing' },
   ];
 
   return (
     <footer className="bg-primary-black border-t-4 border-primary-red">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-8">
           {/* Brand & Description */}
           <motion.div 
-            className="sm:col-span-2 lg:col-span-1"
+            className="col-span-2 sm:col-span-3 lg:col-span-2"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <div className="font-mono text-base sm:text-lg lg:text-xl mb-4">
-              <span className="text-primary-red">[</span>
-              <span className="text-primary-white">IMAGI</span>
-              <span className="text-primary-yellow">NATIVE</span>
-              <span className="text-primary-red">]</span>
-              <span className="text-primary-white">_STUDIOS</span>
-            </div>
-            <p className="text-xs sm:text-sm text-primary-white/70 font-mono leading-relaxed max-w-xs">
-              &gt; Transforming ideas into digital reality through innovative AI solutions 
-              and cutting-edge development.
-            </p>
-            
-            {/* Social Links */}
-            <div className="grid grid-cols-3 gap-3 sm:gap-4 mt-4 sm:mt-6 max-w-[180px]">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 border border-primary-white/30 hover:border-primary-red 
-                           text-primary-white hover:text-primary-red transition-colors
-                           touch-manipulation"
-                  aria-label={social.label}
-                >
-                  <social.icon className="w-4 h-4 sm:w-5 sm:h-5" />
-                </a>
-              ))}
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 sm:gap-6">
+              <div className="flex-1">
+                <div className="font-mono text-base sm:text-lg lg:text-xl mb-3">
+                  <span className="text-primary-red">[</span>
+                  <span className="text-primary-white">IMAGI</span>
+                  <span className="text-primary-yellow">NATIVE</span>
+                  <span className="text-primary-red">]</span>
+                  <span className="text-primary-white">_STUDIOS</span>
+                </div>
+                <p className="text-xs sm:text-sm text-primary-white/70 font-mono leading-relaxed max-w-md">
+                  &gt; Transforming ideas into digital reality through innovative AI solutions 
+                  and cutting-edge development.
+                </p>
+              </div>
+              
+              {/* Social Links */}
+              <div className="flex gap-2 sm:gap-3">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 border border-primary-white/30 hover:border-primary-red 
+                             text-primary-white hover:text-primary-red transition-colors
+                             touch-manipulation"
+                    aria-label={social.label}
+                  >
+                    <social.icon className="w-4 h-4" />
+                  </a>
+                ))}
+              </div>
             </div>
           </motion.div>
 
@@ -92,16 +97,16 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <h3 className="font-mono text-sm sm:text-base text-primary-red uppercase mb-3 sm:mb-4">
+            <h3 className="font-mono text-sm text-primary-red uppercase mb-2 sm:mb-3">
               _NAVIGATION
             </h3>
-            <ul className="space-y-2 sm:space-y-3">
+            <ul className="space-y-1 sm:space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="font-mono text-xs sm:text-sm text-primary-white/70 
-                             hover:text-primary-white transition-colors block py-1"
+                    className="font-mono text-xs text-primary-white/70 
+                             hover:text-primary-white transition-colors block py-0.5"
                   >
                     &gt; {link.name}
                   </a>
@@ -117,15 +122,19 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h3 className="font-mono text-sm sm:text-base text-primary-red uppercase mb-3 sm:mb-4">
+            <h3 className="font-mono text-sm text-primary-red uppercase mb-2 sm:mb-3">
               _SERVICES
             </h3>
-            <ul className="space-y-2 sm:space-y-3">
+            <ul className="space-y-1 sm:space-y-2">
               {services.map((service) => (
-                <li key={service}>
-                  <span className="font-mono text-xs sm:text-sm text-primary-white/70 block py-1">
-                    &gt; {service}
-                  </span>
+                <li key={service.name}>
+                  <Link
+                    href={service.href}
+                    className="font-mono text-xs text-primary-white/70 
+                             hover:text-primary-white transition-colors block py-0.5"
+                  >
+                    &gt; {service.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -138,15 +147,15 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <h3 className="font-mono text-sm sm:text-base text-primary-red uppercase mb-3 sm:mb-4">
+            <h3 className="font-mono text-sm text-primary-red uppercase mb-2 sm:mb-3">
               _CONNECT
             </h3>
-            <div className="space-y-2 sm:space-y-3">
+            <div className="space-y-2">
               <div>
                 <p className="font-mono text-xs text-primary-white/50 uppercase">Email</p>
                 <a 
                   href="mailto:hello@imaginative.studio"
-                  className="font-mono text-xs sm:text-sm text-primary-white/70 
+                  className="font-mono text-xs text-primary-white/70 
                            hover:text-primary-white transition-colors break-all"
                 >
                   hello@imaginative.studio
@@ -156,7 +165,7 @@ export default function Footer() {
                 <p className="font-mono text-xs text-primary-white/50 uppercase">Phone</p>
                 <a 
                   href="tel:+15551234567"
-                  className="font-mono text-xs sm:text-sm text-primary-white/70 
+                  className="font-mono text-xs text-primary-white/70 
                            hover:text-primary-white transition-colors"
                 >
                   +1 (555) 123-4567
@@ -168,35 +177,34 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <motion.div 
-          className="border-t border-primary-white/20 mt-8 sm:mt-12 pt-6 sm:pt-8"
+          className="border-t border-primary-white/20 mt-6 sm:mt-8 pt-4 sm:pt-6"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-4">
             <div className="text-center sm:text-left">
               <p className="font-mono text-xs text-primary-white/50">
                 © {currentYear} ImagiNative Studios. All rights reserved.
               </p>
-              <p className="font-mono text-xs text-primary-white/30 mt-1">
+              <p className="font-mono text-xs text-primary-white/30 mt-0.5">
                 &gt; Built with passion and innovation_
               </p>
             </div>
-            
           </div>
         </motion.div>
 
         {/* Terminal Style Bottom Line */}
         <motion.div 
-          className="mt-6 sm:mt-8"
+          className="mt-4 sm:mt-6"
           initial={{ width: 0 }}
           whileInView={{ width: '100%' }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.5 }}
         >
           <div className="h-px bg-gradient-to-r from-primary-red via-primary-yellow to-primary-red opacity-50" />
-          <div className="mt-2 font-mono text-xs text-primary-white/30 text-center">
+          <div className="mt-1 font-mono text-xs text-primary-white/30 text-center">
             &gt; END_OF_FILE_
             <span className="animate-blink text-primary-red">_</span>
           </div>

@@ -4,6 +4,7 @@ export interface TeamMember {
   role: string;
   roleColor: string;
   description: string;
+  fullBio?: string;
   image: string;
 }
 
@@ -13,7 +14,14 @@ export const teamMembers: TeamMember[] = [
     name: 'STEPHEN KERNS',
     role: 'FOUNDER & DIGITAL INNOVATOR',
     roleColor: 'text-primary-yellow',
-    description: 'With over 15 years in digital design, Alex leads our creative vision with a focus on pushing boundaries and creating memorable digital experiences.',
+    description: 'The mind behind Imaginative AI Studios. Building systems that think, create, and evolve at the crossroads of culture, technology, and purpose.',
+    fullBio: `I'm Stephen, the mind behind Imaginative AI Studios. I don't just build tools—I build systems that think, create, and evolve. From AI agents to automation flows, my work lives at the crossroads of culture, technology, and purpose.
+
+I started this studio because I got tired of waiting on the future to show up. So I built it. Piece by piece. Idea by idea. From SRE workflows to cinematic content, I mix my technical background with creativity, tribal roots, and a deep belief in doing things differently.
+
+This isn't just a business—it's a blueprint. A movement. A place where artists, thinkers, builders, and rebels come to create the kind of work that makes people stop scrolling and start feeling something.
+
+Let's build what's next—on purpose, with power.`,
     image: '/team/S.Kerns.jpg'
   },
   {

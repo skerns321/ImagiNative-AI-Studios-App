@@ -2,12 +2,15 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter, usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
 
   // Handle scroll effect
   useEffect(() => {
@@ -47,14 +50,27 @@ export default function Navigation() {
     };
   }, [isOpen]);
 
-  const menuItems = ['WORK', 'SERVICES', 'ABOUT', 'TESTIMONIALS', 'INSIGHTS', 'CONTACT'];
+  const menuItems = [
+    { name: 'WORK', href: '/work' },
+    { name: 'SERVICES', href: '/#services' },
+    { name: 'ABOUT', href: '/#about' },
+    { name: 'TESTIMONIALS', href: '/#testimonials' },
+    { name: 'INSIGHTS', href: '/insights' },
+    { name: 'CONTACT', href: '/contact' },
+  ];
 
-  const handleMenuClick = (item: string) => {
+  const handleMenuClick = (item: { name: string; href: string }) => {
     setIsOpen(false);
-    // Smooth scroll to section
-    const element = document.getElementById(item.toLowerCase());
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    
+    // If it's a section link and we're on homepage, scroll to section
+    if (item.href.startsWith('/#') && pathname === '/') {
+      const element = document.getElementById(item.href.substring(2));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // Navigate to the page
+      router.push(item.href);
     }
   };
 
@@ -86,50 +102,41 @@ export default function Navigation() {
 
           {/* Tablet Navigation - Shows on medium screens */}
           <div className="hidden md:flex lg:hidden items-center gap-2">
-            {menuItems.slice(0, 4).map((item) => (
+            {menuItems.map((item) => (
               <button
-                key={item}
+                key={item.name}
                 onClick={() => handleMenuClick(item)}
                 className="font-mono text-xs text-primary-white hover:text-primary-red 
                          relative group px-3 py-2 transition-colors touch-target"
               >
-                _{item}
+                _{item.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-red 
                                group-hover:w-full transition-all duration-300" />
               </button>
             ))}
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="p-2 text-primary-white hover:text-primary-red 
-                       border border-primary-white hover:border-primary-red transition-colors
-                       touch-target ml-2"
-              aria-label="More menu options"
-            >
-              <Menu className="w-4 h-4" />
-            </button>
           </div>
 
           {/* Desktop Navigation - Full menu on large screens */}
           <div className="hidden lg:flex items-center">
             {menuItems.map((item) => (
               <button
-                key={item}
+                key={item.name}
                 onClick={() => handleMenuClick(item)}
                 className="font-mono text-xs xl:text-sm text-primary-white hover:text-primary-red 
                          relative group px-3 xl:px-4 py-2 transition-colors touch-target
                          min-w-[80px] xl:min-w-[90px] text-center"
               >
-                _{item}
+                _{item.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-red 
                                group-hover:w-full transition-all duration-300" />
               </button>
             ))}
           </div>
 
-          {/* Mobile Menu Button - Shows on small screens - Enhanced touch target */}
+          {/* Mobile Menu Button - Shows only on mobile screens */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-3 text-primary-white hover:text-primary-red 
+            className="sm:hidden p-3 text-primary-white hover:text-primary-red 
                      border-2 border-primary-white hover:border-primary-red transition-colors
                      min-w-[44px] min-h-[44px] flex items-center justify-center
                      rounded-sm touch-manipulation active:scale-95"
@@ -166,7 +173,7 @@ export default function Navigation() {
                   {/* Menu Items */}
                   {menuItems.map((item, index) => (
                     <motion.button
-                      key={item}
+                      key={item.name}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.05, duration: 0.2 }}
@@ -179,7 +186,7 @@ export default function Navigation() {
                     >
                       <span className="flex items-center">
                         <span className="text-primary-red mr-2">&gt;</span>
-                        _{item}
+                        _{item.name}
                       </span>
                     </motion.button>
                   ))}
@@ -196,7 +203,7 @@ export default function Navigation() {
                         &gt; Ready to start your project?
                       </div>
                       <button
-                        onClick={() => handleMenuClick('CONTACT')}
+                        onClick={() => handleMenuClick({ name: 'CONTACT', href: '/contact' })}
                         className="w-full py-4 px-6 bg-primary-red text-primary-white font-mono text-base
                                  hover:bg-primary-red/80 transition-colors touch-manipulation
                                  min-h-[48px] active:bg-primary-red/70

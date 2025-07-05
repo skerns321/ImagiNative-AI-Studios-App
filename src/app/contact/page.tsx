@@ -124,18 +124,18 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="min-h-screen pt-20 sm:pt-24 lg:pt-32 pb-16 px-4 sm:px-6 lg:px-8 bg-primary-black relative">
+    <main className="min-h-screen pt-16 sm:pt-20 lg:pt-24 pb-12 px-4 sm:px-6 lg:px-8 bg-primary-black relative">
       <CyberpunkBackground intensity="high" />
 
       <div className="max-w-7xl mx-auto relative">
         {/* Back Navigation */}
-        <div className="mb-8 sm:mb-12">
+        <div className="mb-6 sm:mb-8">
           <Link
             href="/"
             className="inline-flex items-center gap-2 text-primary-white hover:text-primary-red 
-                     transition-colors font-mono text-sm touch-manipulation"
+                     transition-colors font-mono text-sm touch-manipulation group"
           >
-            <ArrowLeft size={16} />
+            <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
             BACK_TO_HOME
           </Link>
         </div>
@@ -144,42 +144,58 @@ export default function ContactPage() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12"
+          className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6"
         >
           {/* Contact Info */}
-          <motion.div variants={itemVariants} className="space-y-6 sm:space-y-8">
-            <div className="border-2 sm:border-4 border-primary-white p-4 sm:p-6 lg:p-8 relative">
-              <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 bg-primary-red" />
-              <h1 className="font-mono text-2xl sm:text-3xl lg:text-4xl uppercase relative z-10">
+          <motion.div variants={itemVariants} className="space-y-4 sm:space-y-6">
+            <div className="bg-gradient-to-br from-primary-black to-primary-black/80 border-2 border-primary-white p-4 sm:p-6 relative overflow-hidden">
+              <div className="absolute -top-1 -right-1 w-6 h-6 sm:w-8 sm:h-8 bg-primary-red" />
+              <div className="absolute top-2 right-2 w-2 h-2 bg-primary-yellow animate-pulse" />
+              <h1 className="font-mono text-xl sm:text-2xl lg:text-3xl uppercase relative z-10">
                 <span className="text-primary-red">[</span>
                 Contact
                 <span className="text-primary-red">]_</span>
               </h1>
-              <p className="font-mono text-sm sm:text-base text-primary-white/70 mt-2 sm:mt-4 relative z-10">
+              <p className="font-mono text-sm text-primary-white/70 mt-2 relative z-10">
                 &gt; await sendMessage(yourIdeas);
               </p>
             </div>
 
             {/* Contact Information */}
-            <div className="space-y-4 sm:space-y-6">
+            <div className="space-y-3 sm:space-y-4">
               {[
-                { icon: Mail, label: 'Email', value: 'hello@imaginative.studio' },
-                { icon: Phone, label: 'Phone', value: '+1 (910) 827-9846' },
-                { icon: MapPin, label: 'Location', value: 'Red Springs, NC' }
+                { icon: Mail, label: 'Email', value: 'hello@imaginative.studio', href: 'mailto:hello@imaginative.studio' },
+                { icon: Phone, label: 'Phone', value: '+1 (910) 827-9846', href: 'tel:+19108279846' },
+                { icon: MapPin, label: 'Location', value: 'Red Springs, NC', href: null }
               ].map((item, index) => (
                 <motion.div 
                   key={item.label}
                   variants={itemVariants}
-                  className="flex items-center space-x-3 sm:space-x-4 p-3 sm:p-4 border border-primary-white/20 
-                           hover:border-primary-white/40 transition-colors"
+                  className="group"
                 >
-                  <div className="flex-shrink-0 p-2 border border-primary-red">
-                    <item.icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary-red" />
-                  </div>
-                  <div>
-                    <p className="font-mono text-xs sm:text-sm text-primary-white/60 uppercase">{item.label}</p>
-                    <p className="font-mono text-sm sm:text-base text-primary-white">{item.value}</p>
-                  </div>
+                  {item.href ? (
+                    <a href={item.href} className="flex items-center space-x-3 p-3 border border-primary-white/20 
+                             hover:border-primary-red hover:bg-primary-red/5 transition-all duration-200
+                             transform hover:translate-x-1 hover:-translate-y-0.5">
+                      <div className="flex-shrink-0 p-2 border border-primary-red group-hover:border-primary-yellow group-hover:bg-primary-yellow/10 transition-all">
+                        <item.icon className="w-4 h-4 text-primary-red group-hover:text-primary-yellow transition-colors" />
+                      </div>
+                      <div>
+                        <p className="font-mono text-xs text-primary-white/60 uppercase">{item.label}</p>
+                        <p className="font-mono text-sm text-primary-white group-hover:text-primary-yellow transition-colors">{item.value}</p>
+                      </div>
+                    </a>
+                  ) : (
+                    <div className="flex items-center space-x-3 p-3 border border-primary-white/20">
+                      <div className="flex-shrink-0 p-2 border border-primary-red">
+                        <item.icon className="w-4 h-4 text-primary-red" />
+                      </div>
+                      <div>
+                        <p className="font-mono text-xs text-primary-white/60 uppercase">{item.label}</p>
+                        <p className="font-mono text-sm text-primary-white">{item.value}</p>
+                      </div>
+                    </div>
+                  )}
                 </motion.div>
               ))}
             </div>
@@ -188,79 +204,85 @@ export default function ContactPage() {
           {/* Contact Form */}
           <motion.div variants={itemVariants}>
             {isSuccess ? (
-              <div className="border-2 border-primary-green p-6 sm:p-8">
-                <h3 className="font-mono text-xl sm:text-2xl text-primary-green mb-4">MESSAGE_SENT!</h3>
-                <p className="font-mono text-sm sm:text-base text-primary-white/80">
+              <div className="border-2 border-primary-green p-6 relative bg-gradient-to-br from-green-900/20 to-primary-black">
+                <div className="absolute -top-1 -right-1 w-4 h-4 bg-primary-green animate-pulse" />
+                <h3 className="font-mono text-xl text-primary-green mb-3">MESSAGE_SENT!</h3>
+                <p className="font-mono text-sm text-primary-white/80">
                   &gt; Thank you for reaching out. We'll get back to you soon!
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-4 bg-gradient-to-br from-primary-black to-primary-black/95 p-4 sm:p-6 border border-primary-white/10">
                 {/* Name Field */}
-                <div className="relative">
-                  <div className="absolute inset-0 bg-primary-red translate-x-1 translate-y-1" />
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-primary-red translate-x-1 translate-y-1 group-focus-within:translate-x-2 group-focus-within:translate-y-2 transition-transform" />
                   <input
                     type="text"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="_Name"
-                    className="w-full p-3 sm:p-4 font-mono text-sm sm:text-base bg-primary-black border-2 border-primary-white 
+                    className="w-full p-3 font-mono text-sm bg-primary-black border-2 border-primary-white 
                              text-primary-white relative placeholder:text-primary-white/50 focus:outline-none
-                             focus:border-primary-yellow transition-colors"
+                             focus:border-primary-yellow transition-all duration-200
+                             group-focus-within:shadow-lg"
                     required
                   />
                   {errors.name && (
-                    <p className="mt-1 text-xs sm:text-sm font-mono text-primary-red">
+                    <p className="mt-1 text-xs font-mono text-primary-red">
                       &gt; {errors.name}
                     </p>
                   )}
                 </div>
 
                 {/* Email Field */}
-                <div className="relative">
-                  <div className="absolute inset-0 bg-primary-red translate-x-1 translate-y-1" />
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-primary-red translate-x-1 translate-y-1 group-focus-within:translate-x-2 group-focus-within:translate-y-2 transition-transform" />
                   <input
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="_Email"
-                    className="w-full p-3 sm:p-4 font-mono text-sm sm:text-base bg-primary-black border-2 border-primary-white 
+                    className="w-full p-3 font-mono text-sm bg-primary-black border-2 border-primary-white 
                              text-primary-white relative placeholder:text-primary-white/50 focus:outline-none
-                             focus:border-primary-yellow transition-colors"
+                             focus:border-primary-yellow transition-all duration-200
+                             group-focus-within:shadow-lg"
                     required
                   />
                   {errors.email && (
-                    <p className="mt-1 text-xs sm:text-sm font-mono text-primary-red">
+                    <p className="mt-1 text-xs font-mono text-primary-red">
                       &gt; {errors.email}
                     </p>
                   )}
                 </div>
 
                 {/* Company Field (Optional) */}
-                <div className="relative">
-                  <div className="absolute inset-0 bg-primary-yellow translate-x-1 translate-y-1" />
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-primary-yellow translate-x-1 translate-y-1 group-focus-within:translate-x-2 group-focus-within:translate-y-2 transition-transform" />
                   <input
                     type="text"
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
                     placeholder="_Company (Optional)"
-                    className="w-full p-3 sm:p-4 font-mono text-sm sm:text-base bg-primary-black border-2 border-primary-white 
+                    className="w-full p-3 font-mono text-sm bg-primary-black border-2 border-primary-white 
                              text-primary-white relative placeholder:text-primary-white/50 focus:outline-none
-                             focus:border-primary-yellow transition-colors"
+                             focus:border-primary-yellow transition-all duration-200
+                             group-focus-within:shadow-lg"
                   />
                 </div>
 
                 {/* Services Checkboxes */}
                 <div className="space-y-3">
-                  <label className="block font-mono text-sm sm:text-base text-primary-white">
+                  <label className="block font-mono text-sm text-primary-white">
                     _Services of Interest:
                   </label>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {services.map((service) => (
-                      <label key={service.id} className="flex items-center space-x-2 cursor-pointer touch-manipulation">
+                      <label key={service.id} className="flex items-center space-x-2 cursor-pointer touch-manipulation 
+                                                           p-2 border border-primary-white/20 hover:border-primary-yellow/50 
+                                                           hover:bg-primary-yellow/5 transition-all duration-200 group">
                         <input
                           type="checkbox"
                           value={service.id}
@@ -269,28 +291,29 @@ export default function ContactPage() {
                           className="w-4 h-4 border-2 border-primary-white bg-primary-black 
                                    checked:bg-primary-red focus:outline-none"
                         />
-                        <span className="font-mono text-xs sm:text-sm text-primary-white">{service.label}</span>
+                        <span className="font-mono text-xs text-primary-white group-hover:text-primary-yellow transition-colors">{service.label}</span>
                       </label>
                     ))}
                   </div>
                 </div>
 
                 {/* Message Field */}
-                <div className="relative">
-                  <div className="absolute inset-0 bg-primary-red translate-x-1 translate-y-1" />
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-primary-red translate-x-1 translate-y-1 group-focus-within:translate-x-2 group-focus-within:translate-y-2 transition-transform" />
                   <textarea
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="_Your Message"
-                    rows={5}
-                    className="w-full p-3 sm:p-4 font-mono text-sm sm:text-base bg-primary-black border-2 border-primary-white 
+                    rows={4}
+                    className="w-full p-3 font-mono text-sm bg-primary-black border-2 border-primary-white 
                              text-primary-white relative placeholder:text-primary-white/50 focus:outline-none
-                             focus:border-primary-yellow transition-colors resize-vertical"
+                             focus:border-primary-yellow transition-all duration-200 resize-vertical
+                             group-focus-within:shadow-lg"
                     required
                   />
                   {errors.message && (
-                    <p className="mt-1 text-xs sm:text-sm font-mono text-primary-red">
+                    <p className="mt-1 text-xs font-mono text-primary-red">
                       &gt; {errors.message}
                     </p>
                   )}
@@ -300,17 +323,17 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-primary-black border-2 border-primary-white p-3 sm:p-4 font-mono 
-                           text-sm sm:text-base uppercase relative hover:translate-x-1 hover:-translate-y-1 
-                           transition-transform group disabled:opacity-50 disabled:cursor-not-allowed
-                           touch-manipulation"
+                  className="w-full bg-primary-black border-2 border-primary-white p-3 font-mono 
+                           text-sm uppercase relative hover:translate-x-1 hover:-translate-y-1 
+                           transition-all duration-200 group disabled:opacity-50 disabled:cursor-not-allowed
+                           touch-manipulation hover:border-primary-yellow disabled:hover:translate-x-0 disabled:hover:translate-y-0"
                 >
-                  <span className="relative z-10">
+                  <span className="relative z-10 group-hover:text-primary-yellow transition-colors">
                     {isSubmitting ? 'SENDING...' : 'SEND_MESSAGE_'}
                   </span>
                   <div className="absolute inset-0 bg-primary-red -z-0 translate-x-2 
                                 translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3 
-                                transition-transform" />
+                                transition-transform group-hover:bg-primary-yellow/80" />
                 </button>
               </form>
             )}

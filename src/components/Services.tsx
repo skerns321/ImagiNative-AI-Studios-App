@@ -75,10 +75,10 @@ export default function Services() {
   }
 
   return (
-    <section id="services" className="py-8 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-primary-black">
+    <section id="services" className="py-4 sm:py-6 md:py-8 lg:py-10 px-4 sm:px-6 lg:px-8 bg-primary-black">
       <div className="max-w-7xl mx-auto">
         {/* Section Header with Brutalist Style */}
-        <div className="mb-16 border-4 border-primary-white p-8 relative">
+        <div className="mb-8 border-4 border-primary-white p-4 relative">
           <div className="absolute -top-4 -right-4 w-16 h-16 bg-primary-red" />
           <h2 className="font-mono text-fluid-4xl uppercase relative z-10">
             <span className="text-primary-red">[</span>
@@ -90,7 +90,7 @@ export default function Services() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
           {services.map((service, index) => (
             <motion.div
               key={service.id}
@@ -101,11 +101,11 @@ export default function Services() {
             >
               <Link href={service.href} className="block group">
                 <WindowFrame title={service.title}>
-                  <div className="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4 
+                  <div className="flex flex-col sm:flex-row items-start space-y-2 sm:space-y-0 sm:space-x-2 
                                 group-hover:transform group-hover:translate-x-1 transition-transform">
-                    <div className="flex-shrink-0 p-2 sm:p-3 border-2 border-primary-red 
+                    <div className="flex-shrink-0 p-1 sm:p-2 border-2 border-primary-red 
                                   group-hover:border-primary-yellow transition-colors">
-                      <service.Icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary-red 
+                      <service.Icon className="w-4 h-4 sm:w-6 sm:h-6 text-primary-red 
                                               group-hover:text-primary-yellow transition-colors" />
                     </div>
                     <div className="flex-1">
@@ -116,7 +116,7 @@ export default function Services() {
                           ? service.description.join('\n')
                           : service.description}
                       </p>
-                      <div className="mt-4 flex items-center gap-2 text-primary-yellow 
+                      <div className="mt-2 flex items-center gap-2 text-primary-yellow 
                                     group-hover:text-primary-white transition-colors">
                         <span className="font-mono text-sm">LEARN_MORE</span>
                         <span className="font-mono text-sm">&gt;&gt;</span>
@@ -131,13 +131,13 @@ export default function Services() {
 
         {/* Call to Action */}
         <motion.div 
-          className="mt-12 sm:mt-16 lg:mt-20 text-center"
+          className="mt-6 sm:mt-8 lg:mt-10 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
         >
-          <div className="border-2 border-primary-white p-6 sm:p-8 relative max-w-2xl mx-auto">
+          <div className="border-2 border-primary-white p-3 sm:p-4 relative max-w-xl mx-auto">
             <div className="absolute -top-2 -right-2 w-8 h-8 sm:w-12 sm:h-12 bg-primary-red" />
             <h3 className="font-mono text-lg sm:text-xl lg:text-2xl text-primary-white mb-4">
               READY_TO_START?
