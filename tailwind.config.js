@@ -42,6 +42,8 @@ module.exports = {
         mono: ['var(--font-jetbrains-mono)', 'ui-monospace', 'SFMono-Regular', 'Monaco', 'Consolas', 'monospace'],
         heading: ['var(--font-inter)', 'system-ui', '-apple-system', 'sans-serif'],
         body: ['var(--font-inter)', 'system-ui', '-apple-system', 'sans-serif'],
+        inter: ['var(--font-inter)', 'system-ui', '-apple-system', 'sans-serif'],
+        jetbrains: ['var(--font-jetbrains-mono)', 'ui-monospace', 'SFMono-Regular', 'Monaco', 'Consolas', 'monospace'],
       },
       fontSize: {
         'xs': ['0.75rem', { lineHeight: '1rem' }],
@@ -155,6 +157,18 @@ module.exports = {
       maxWidth: {
         '8xl': '88rem',
         '9xl': '96rem',
+        // Reduced container sizes for more compact layout
+        'xs': '20rem',
+        'sm': '24rem', 
+        'md': '28rem',
+        'lg': '32rem',
+        'xl': '36rem',
+        '2xl': '42rem',
+        '3xl': '48rem',
+        '4xl': '56rem',
+        '5xl': '64rem',
+        '6xl': '72rem',
+        '7xl': '80rem',
       },
     },
   },

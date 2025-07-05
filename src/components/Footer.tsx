@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Twitter, ArrowUp, Facebook, Instagram } from 'lucide-react';
+import { Github, Linkedin, Twitter, Facebook, Instagram } from 'lucide-react';
 
 // Custom TikTok Icon Component
 const TikTokIcon = ({ className }: { className?: string }) => (
@@ -16,10 +16,6 @@ const TikTokIcon = ({ className }: { className?: string }) => (
 );
 
 export default function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
@@ -181,23 +177,13 @@ export default function Footer() {
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <div className="text-center sm:text-left">
               <p className="font-mono text-xs text-primary-white/50">
-                © {currentYear} Imaginative Studios. All rights reserved.
+                © {currentYear} ImagiNative Studios. All rights reserved.
               </p>
               <p className="font-mono text-xs text-primary-white/30 mt-1">
                 &gt; Built with passion and innovation_
               </p>
             </div>
             
-            {/* Scroll to Top Button */}
-            <button
-              onClick={scrollToTop}
-              className="p-2 sm:p-3 border border-primary-white/30 hover:border-primary-red 
-                       text-primary-white hover:text-primary-red transition-colors
-                       hover:-translate-y-1 transform duration-200 touch-manipulation"
-              aria-label="Scroll to top"
-            >
-              <ArrowUp className="w-4 h-4 sm:w-5 sm:h-5" />
-            </button>
           </div>
         </motion.div>
 

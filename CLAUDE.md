@@ -2,17 +2,25 @@
 
 This file provides comprehensive guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Development Commands
+## 🚀 Quick Start
 
 ```bash
+# Development
 npm run dev              # Start development server on port 3000
 npm run build            # Build for production
 npm start                # Start production server (uses custom server.js)
 npm run lint             # Run ESLint
 npm run generate-images  # Generate placeholder images using AI
-```
 
-## Architecture Overview
+# Essential file locations
+src/app/page.tsx         # Homepage
+src/components/          # All React components
+src/lib/data/           # Static content (projects, team, etc.)
+src/app/api/            # AI services & API routes
+.env.local              # Environment variables
+```plaintext
+
+## 🏗️ Architecture Overview
 
 This is a **Next.js 14 App Router** application for ImagiNative Studios - a digital agency platform with comprehensive AI integrations and a distinctive cyberpunk/terminal aesthetic.
 
@@ -24,157 +32,160 @@ This is a **Next.js 14 App Router** application for ImagiNative Studios - a digi
 - **Security**: Custom middleware, rate limiting, threat monitoring, comprehensive security headers
 - **Validation**: Zod schemas throughout for runtime type safety
 - **Styling**: Custom Tailwind configuration with terminal-themed design system
-- **Performance**: Dynamic imports, image optimization, responsive design with 7 breakpoints
+- **Typography**: JetBrains Mono for terminal/code elements, Inter for headings and body text
 
 ### Key Architectural Patterns
 
-**Security-First Design**: Custom middleware (`src/middleware.ts`) handles authentication, rate limiting, and threat detection with comprehensive monitoring system. Additional security layer in production server (`server.js`).
+**Security-First Design**: Custom middleware (`src/middleware.ts`) handles authentication, rate limiting, and threat detection. Production server (`server.js`) adds additional security layers.
 
-**AI Service Integration**: Multiple AI providers with streaming responses and fallback systems:
+**AI Service Integration**: Multiple providers with streaming responses:
+
 - Chat completions (OpenAI GPT-4 / Anthropic Claude 3.5 Sonnet)
 - Image generation (Replicate Stable Diffusion)
 - Voice transcription (Deepgram)
 - Edge runtime for optimal performance
 
 **Component Architecture**:
+
 - Page components in `src/app/` following App Router conventions
 - 25+ reusable UI components in `src/components/`
-- React contexts for global state management (`AuthContext`, `DeepgramContext`)
-- Custom hooks in `src/hooks/` and `src/lib/hooks/`
 - WindowFrame wrapper component for terminal aesthetic consistency
+- React contexts for global state (`AuthContext`, `DeepgramContext`)
+- Custom hooks in `src/hooks/` and `src/lib/hooks/`
 
-**Data Flow**: 
+**Data Flow**:
+
 - Static content in `src/lib/data/` (projects, team, testimonials, insights)
 - Firebase for authentication and dynamic data persistence
-- Zod validation schemas in `src/lib/utils/validation.ts`
-- Error boundaries and comprehensive error handling
+- Zod validation schemas for all API inputs
+- Comprehensive error boundaries and error handling
 
-**Design System**:
-- Terminal/cyberpunk aesthetic with black, white, red, yellow color scheme
-- JetBrains Mono for terminal/code elements, Inter for headings and body text
-- Fluid typography using CSS clamp() for responsive scaling
-- Custom Tailwind utilities for terminal effects and animations
+## 🎨 Design System & Styling
 
-## Important Conventions
+### Color Palette
 
-**Styling Consistency**: 
-- All components should use the terminal aesthetic with WindowFrame containers
-- Maintain the cyberpunk color scheme throughout
-- Use consistent typography hierarchy and responsive patterns
-- Follow mobile-first responsive design with 7 breakpoints (xs to 3xl)
+```css
+/* Terminal Colors */
+bg-primary-black        /* #000000 - Main background */
+text-primary-white      /* #FFFFFF - Primary text */
+border-primary-red      /* #FF0000 - Accent borders */
+text-primary-yellow     /* #FFFF00 - Highlights */
 
-**Code Patterns**:
-- Always use 'use client' directive for interactive components
-- Implement mounted state pattern to prevent hydration issues
-- Use dynamic imports for performance optimization
-- Follow Framer Motion animation patterns for consistency
+/* Opacity Variants */
+text-primary-white/80   /* 80% opacity white */
+text-primary-white/50   /* 50% opacity white */
+bg-primary-red/20       /* 20% opacity red background */
+```plaintext
 
-**Error Handling**: 
-- Comprehensive error boundaries in all major components
-- API error responses with proper status codes and monitoring
-- Graceful degradation when AI services are unavailable
+### Typography System
 
-**Type Safety**: 
-- Strict TypeScript configuration with no implicit any
-- Zod schemas for all API inputs and form validation
-- Proper TypeScript interfaces for all data structures
+```css
+/* Font Families */
+font-mono               /* JetBrains Mono - terminal/code aesthetic */
+font-sans               /* Inter - general text */
+font-heading            /* Inter - section headings */
+font-body               /* Inter - body text */
 
-**Security Headers**: 
-- Production server implements additional security layers
-- Content Security Policy configured for AI service domains
-- Rate limiting and threat monitoring in middleware
+/* Responsive Text Sizes (Fluid Typography) */
+text-fluid-xs           /* clamp(0.75rem, 0.5vw + 0.5rem, 0.875rem) */
+text-fluid-sm           /* clamp(0.875rem, 0.75vw + 0.625rem, 1rem) */
+text-fluid-base         /* clamp(1rem, 1vw + 0.75rem, 1.125rem) */
+text-fluid-lg           /* clamp(1.125rem, 1.25vw + 0.875rem, 1.5rem) */
+text-fluid-xl           /* clamp(1.25rem, 1.5vw + 1rem, 1.875rem) */
 
-## File Structure Notes
+/* Standard Responsive Patterns */
+text-sm sm:text-base md:text-lg lg:text-xl    /* Responsive scaling */
+p-4 sm:p-6 md:p-8 lg:p-10                    /* Responsive padding */
+grid-cols-1 sm:grid-cols-2 lg:grid-cols-4    /* Responsive grid */
+```plaintext
 
-```
-src/
-├── app/                          # Next.js 14 App Router
-│   ├── layout.tsx                # Root layout with fonts & metadata
-│   ├── page.tsx                  # Homepage with dynamic imports
-│   ├── globals.css               # Global styles & Tailwind imports
-│   ├── api/                      # AI service API routes
-│   │   ├── anthropic/chat/       # Claude 3.5 Sonnet streaming
-│   │   ├── openai/chat/          # GPT-4 streaming
-│   │   ├── replicate/generate-image/ # Stable Diffusion
-│   │   ├── deepgram/             # Voice transcription
-│   │   ├── contact/              # Contact form handler
-│   │   ├── monitoring/log/       # Performance monitoring
-│   │   └── security/log/         # Security event logging
-│   ├── services/                 # Service pages
-│   ├── work/                     # Portfolio pages with dynamic routing
-│   ├── insights/                 # Blog pages with dynamic routing
-│   └── contact/                  # Contact page
-├── components/                   # 25+ reusable React components
-│   ├── WindowFrame.tsx           # Terminal-style container wrapper
-│   ├── Navigation.tsx            # Main navigation with mobile menu
-│   ├── Footer.tsx                # Site footer with social links
-│   ├── Hero.tsx                  # Homepage hero section
-│   ├── About.tsx                 # About section
-│   ├── Services.tsx              # Services showcase
-│   ├── Work.tsx                  # Portfolio section
-│   ├── Testimonials.tsx          # Client testimonials
-│   ├── Insights.tsx              # Blog section
-│   ├── Contact.tsx               # Contact section with form
-│   ├── VoiceRecorder.tsx         # Voice note functionality
-│   ├── ImageUpload.tsx           # AI image generation
-│   ├── ErrorBoundary.tsx         # Error handling
-│   ├── LoadingSpinner.tsx        # Loading states
-│   ├── ScrollProgress.tsx        # Page scroll indicator
-│   ├── CyberpunkBackground.tsx   # Animated background
-│   └── ...                       # Additional components
-├── lib/                          # Utilities and configurations
-│   ├── data/                     # Static content
-│   │   ├── projects.ts           # Portfolio projects
-│   │   ├── team.ts               # Team member profiles
-│   │   ├── testimonials.ts       # Client testimonials
-│   │   └── insights.ts           # Blog articles
-│   ├── contexts/                 # React context providers
-│   │   ├── AuthContext.tsx       # Firebase authentication
-│   │   └── DeepgramContext.tsx   # Voice API context
-│   ├── hooks/                    # Custom React hooks
-│   │   ├── useAuth.ts            # Authentication hook
-│   │   ├── useCustomScroll.ts    # Scroll behavior
-│   │   └── useKeyboardNavigation.ts # Accessibility
-│   ├── utils/                    # Helper functions
-│   │   ├── validation.ts         # Zod schemas
-│   │   ├── sanitize.ts           # Input sanitization
-│   │   ├── cors.ts               # CORS configuration
-│   │   ├── rateLimit.ts          # Rate limiting
-│   │   ├── monitoring.ts         # Performance monitoring
-│   │   └── security-monitor.ts   # Security monitoring
-│   ├── services/                 # External service integrations
-│   │   └── monitoring.ts         # Monitoring service
-│   └── config/                   # Configuration files
-│       ├── sessionConfig.ts      # Session configuration
-│       └── securityHeaders.ts    # Security headers
-├── middleware.ts                 # Next.js middleware (security & monitoring)
-├── middleware/                   # Additional middleware modules
-│   ├── apiSecurityMiddleware.ts  # API security
-│   └── authMiddleware.ts         # Authentication
-└── hooks/                        # Additional custom hooks
-    └── useResponsive.ts          # Responsive breakpoints
+### Terminal UI Patterns
 
-Configuration Files:
-├── next.config.js                # Next.js configuration with security
-├── tailwind.config.js            # Custom design system
-├── tsconfig.json                 # TypeScript configuration
-├── server.js                     # Production server with security
-├── postcss.config.mjs            # PostCSS configuration
-└── package.json                  # Dependencies and scripts
+```css
+/* Common Terminal Styling */
+border-2 border-primary-white    /* Standard terminal borders */
+hover:border-primary-red         /* Interactive hover states */
+transition-colors               /* Smooth color transitions */
 
-Public Assets:
-public/
-├── hero/                         # Hero section images
-├── projects/                     # Portfolio images
-├── team/                         # Team member photos
-├── insights/                     # Blog post images
-├── og-image.jpg                  # Social sharing image
-└── ...                           # Additional static assets
-```
+/* Custom Utilities */
+shadow-terminal                 /* Terminal-style box shadow */
+animate-blink                  /* Terminal cursor animation */
+scrollbar-terminal             /* Custom terminal scrollbar */
+```plaintext
 
-## Component Development Guidelines
+## 🤖 AI Service Integration
+
+### API Endpoints
+
+```typescript
+// Chat Completions
+POST /api/openai/chat              # GPT-4 streaming chat
+POST /api/anthropic/chat           # Claude 3.5 Sonnet chat
+
+// Image Generation
+POST /api/replicate/generate-image # Stable Diffusion images
+
+// Voice Services
+GET /api/deepgram/route            # Deepgram API key
+
+// Monitoring
+POST /api/monitoring/log           # Performance monitoring
+POST /api/security/log             # Security event logging
+```plaintext
+
+### Usage Examples
+
+```typescript
+// Chat Integration
+import { useChat } from 'ai/react';
+
+const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
+  api: '/api/openai/chat', // or '/api/anthropic/chat'
+});
+
+// Image Generation
+const generateImage = async (prompt: string) => {
+  const response = await fetch('/api/replicate/generate-image', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ prompt }),
+  });
+  return response.json();
+};
+
+// Error Handling
+try {
+  const result = await apiCall();
+} catch (error) {
+  console.error('AI Service Error:', error);
+}
+```plaintext
+
+### API Route Pattern
+
+All AI API routes should follow this structure:
+
+```typescript
+import { NextRequest, NextResponse } from 'next/server';
+
+export const runtime = "edge"; // For performance
+
+export async function POST(req: NextRequest) {
+  try {
+    const { input } = await req.json();
+    const result = await aiServiceCall(input);
+    return NextResponse.json({ success: true, data: result });
+  } catch (error) {
+    console.error('AI Service Error:', error);
+    return NextResponse.json({ error: 'Service unavailable' }, { status: 503 });
+  }
+}
+```plaintext
+
+## 📱 Component Development
 
 ### Standard Component Template
+
 Always follow this pattern for new components:
 
 ```typescript
@@ -202,7 +213,6 @@ export default function NewComponent({
     setMounted(true);
   }, []);
 
-  // Don't render until mounted
   if (!mounted) return null;
 
   return (
@@ -221,18 +231,34 @@ export default function NewComponent({
     </motion.section>
   );
 }
-```
+```plaintext
 
-### Terminal Styling Guidelines
-- Use `WindowFrame` component for all major sections
-- Maintain terminal aesthetic with appropriate colors and typography
-- Follow responsive design patterns with proper breakpoints
-- Use Framer Motion for consistent animations
+### WindowFrame Usage (Terminal Container)
+
+```typescript
+import WindowFrame from '@/components/WindowFrame';
+
+<WindowFrame title="SECTION_TITLE">
+  <div className="p-4 space-y-4">
+    <h2 className="text-primary-red font-mono uppercase">
+      &gt; Subsection Title
+    </h2>
+    <p className="text-primary-white/80 font-mono">
+      Terminal-style content
+    </p>
+    <div className="border-l-2 border-primary-yellow pl-4">
+      Highlighted content block
+    </div>
+  </div>
+</WindowFrame>
+```plaintext
 
 ### Form Validation Pattern
+
 Always use Zod for form validation:
 
 ```typescript
+import { useState } from 'react';
 import { z } from 'zod';
 
 const formSchema = z.object({
@@ -241,70 +267,238 @@ const formSchema = z.object({
   message: z.string().min(10, 'Message must be at least 10 characters'),
 });
 
-// Use in component with proper error handling
-```
+export default function TerminalForm() {
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [errors, setErrors] = useState({});
 
-## AI Service Integration Guidelines
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const validatedData = formSchema.parse(formData);
+      // Submit to API
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        const errorMap: Record<string, string> = {};
+        error.errors.forEach((err) => {
+          if (err.path[0]) {
+            errorMap[err.path[0] as string] = err.message;
+          }
+        });
+        setErrors(errorMap);
+      }
+    }
+  };
 
-### API Route Pattern
-All AI API routes should follow this structure:
+  return (
+    <WindowFrame title="CONTACT_FORM">
+      <form onSubmit={handleSubmit} className="space-y-4 p-6">
+        <div>
+          <label className="block text-primary-yellow font-mono text-sm mb-2">
+            NAME:
+          </label>
+          <input
+            className="w-full bg-primary-black border-2 border-primary-white
+                     text-primary-white font-mono p-3 focus:border-primary-red
+                     focus:outline-none transition-colors"
+            placeholder="Enter name..."
+          />
+        </div>
+        
+        <button className="w-full py-3 bg-primary-black border-2 border-primary-white
+                         text-primary-white font-mono hover:border-primary-red
+                         transition-colors">
+          SUBMIT
+        </button>
+      </form>
+    </WindowFrame>
+  );
+}
+```plaintext
+
+## 🗃️ Data Management
+
+### Static Data Files
 
 ```typescript
-import { NextRequest, NextResponse } from 'next/server';
+// Portfolio Projects: src/lib/data/projects.ts
+export const projects: Project[] = [
+  {
+    id: 'project-id',
+    slug: 'project-slug',
+    title: 'PROJECT_TITLE',
+    description: 'Brief description',
+    tags: ['AI', 'Web Development'],
+    image: '/projects/project.jpg',
+    technologies: ['Next.js', 'TypeScript'],
+    featured: true
+  }
+];
 
-export const runtime = "edge"; // For performance
+// Team Members: src/lib/data/team.ts
+export const team: TeamMember[] = [
+  {
+    id: 'member-id',
+    name: 'Name',
+    role: 'ROLE_TITLE',
+    bio: 'Biography',
+    image: '/team/member.jpg',
+    skills: ['React', 'Node.js'],
+    featured: true
+  }
+];
+
+// Helper functions
+export const getFeaturedProjects = () => projects.filter(p => p.featured);
+export const getProjectBySlug = (slug: string) => projects.find(p => p.slug === slug);
+```plaintext
+
+### Dynamic Content with Firebase
+
+```typescript
+// Contact form submissions
+export const submitContactForm = async (formData: {
+  name: string;
+  email: string;
+  message: string;
+}) => {
+  try {
+    const docRef = await addDoc(collection(db, 'contacts'), {
+      ...formData,
+      timestamp: new Date(),
+      status: 'unread'
+    });
+    return { success: true, id: docRef.id };
+  } catch (error) {
+    console.error('Firebase submission error:', error);
+    return { success: false, error: error.message };
+  }
+};
+```plaintext
+
+## 🔧 Common Development Tasks
+
+### Adding New Content
+
+#### Portfolio Project
+
+```typescript
+// Edit: src/lib/data/projects.ts
+{
+  id: 'new-project',
+  slug: 'new-project',
+  title: 'NEW_PROJECT_TITLE',
+  description: 'Brief project description',
+  fullDescription: 'Detailed description',
+  tags: ['AI', 'Web Development'],
+  image: '/projects/new-project.jpg',
+  technologies: ['Next.js', 'TypeScript'],
+  timeline: 'Q1 2024',
+  client: 'Client Name',
+  featured: true
+}
+```plaintext
+
+#### Team Member
+
+```typescript
+// Edit: src/lib/data/team.ts
+{
+  id: 'new-member',
+  name: 'Member Name',
+  role: 'ROLE_TITLE',
+  bio: 'Professional background',
+  image: '/team/new-member.jpg',
+  skills: ['Skill 1', 'Skill 2'],
+  social: {
+    linkedin: 'https://linkedin.com/in/username'
+  }
+}
+```plaintext
+
+### Creating New Pages
+
+```typescript
+// 1. Create: src/app/new-page/page.tsx
+import { Metadata } from 'next';
+import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
+
+export const metadata: Metadata = {
+  title: 'New Page | ImagiNative Studios',
+  description: 'Page description',
+};
+
+export default function NewPage() {
+  return (
+    <div className="min-h-screen bg-primary-black">
+      <Navigation />
+      <main className="pt-20 pb-16">
+        {/* Page content */}
+      </main>
+      <Footer />
+    </div>
+  );
+}
+
+// 2. Add to Navigation: src/components/Navigation.tsx
+const navItems = [
+  // ... existing items
+  { name: 'New Page', href: '/new-page' }
+];
+```plaintext
+
+### Creating API Routes
+
+```typescript
+// Create: src/app/api/new-endpoint/route.ts
+import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
+
+const schema = z.object({
+  field: z.string()
+});
 
 export async function POST(req: NextRequest) {
   try {
-    // Input validation
-    const { input } = await req.json();
+    const body = await req.json();
+    const data = schema.parse(body);
     
-    // Process with AI service
-    const result = await aiServiceCall(input);
-    
-    return NextResponse.json({ success: true, data: result });
+    // Process request
+    return NextResponse.json({ success: true, data });
   } catch (error) {
-    console.error('AI Service Error:', error);
-    return NextResponse.json(
-      { error: 'Service unavailable' },
-      { status: 503 }
-    );
+    return NextResponse.json({ error: 'Invalid request' }, { status: 400 });
   }
 }
-```
+```plaintext
 
-### Error Handling
-- Always implement graceful degradation for AI services
-- Provide meaningful error messages to users
-- Log errors for monitoring and debugging
-- Use try-catch blocks around all AI service calls
+## 🔧 Environment Configuration
 
-## Security Considerations
-
-### Environment Variables
-Required environment variables for full functionality:
+### Required Variables (.env.local)
 
 ```bash
-# Firebase Configuration
-NEXT_PUBLIC_FIREBASE_API_KEY=
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
-NEXT_PUBLIC_FIREBASE_PROJECT_ID=
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
-NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
-NEXT_PUBLIC_FIREBASE_APP_ID=
+# Firebase (Required for auth/database)
+NEXT_PUBLIC_FIREBASE_API_KEY=your-key
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your-project
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your-domain
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your-bucket
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your-id
+NEXT_PUBLIC_FIREBASE_APP_ID=your-app-id
 
-# AI Service Keys
-OPENAI_API_KEY=
-ANTHROPIC_API_KEY=
-REPLICATE_API_TOKEN=
-DEEPGRAM_API_KEY=
+# AI Services (Required for AI features)
+OPENAI_API_KEY=sk-proj-your-openai-key
+ANTHROPIC_API_KEY=sk-ant-your-anthropic-key
+REPLICATE_API_TOKEN=r8_your-replicate-token
+DEEPGRAM_API_KEY=your-deepgram-key
 
-# Optional Services
-SENDGRID_API_KEY=
-NEXT_PUBLIC_SITE_URL=
-```
+# Optional
+SENDGRID_API_KEY=SG.your-sendgrid-key
+NEXT_PUBLIC_SITE_URL=https://yourdomain.com
+```plaintext
+
+## 🔒 Security & Performance
 
 ### Security Best Practices
+
 - Never expose API keys in client-side code
 - Use middleware for rate limiting and threat detection
 - Implement proper CORS configuration
@@ -312,98 +506,169 @@ NEXT_PUBLIC_SITE_URL=
 - Use Content Security Policy headers
 - Monitor for suspicious activity
 
-## Performance Optimization
+### Performance Optimization
 
-### Code Splitting
-- Use dynamic imports for heavy components
-- Implement proper loading states
-- Use Suspense boundaries where appropriate
-
-### Image Optimization
-- Use Next.js Image component with proper sizing
-- Implement responsive images with sizes attribute
-- Use placeholder and priority props appropriately
-
-### Bundle Optimization
-- Avoid importing entire libraries when only specific functions are needed
-- Use tree shaking effectively
-- Monitor bundle size with analysis tools
-
-## Testing
-
-No test framework is currently configured. When adding tests:
-1. Check with the user for their preferred testing approach
-2. Consider the existing architecture and patterns
-3. Ensure tests maintain the cyberpunk/terminal aesthetic in any UI testing
-4. Include tests for AI service integrations with proper mocking
-
-## Deployment Guidelines
-
-### Build Process
-1. Ensure all environment variables are configured
-2. Run `npm run build` to verify production build
-3. Test with `npm start` locally
-4. Verify all AI services are functional
-5. Check security headers and middleware functionality
-
-### Production Environment
-- Use custom `server.js` for additional security
-- Ensure all environment variables are set in deployment platform
-- Monitor performance and error rates
-- Verify AI service quotas and limits
-
-## Accessibility
-
-- Implement proper ARIA labels and roles
-- Ensure keyboard navigation works throughout
-- Maintain proper color contrast ratios
-- Provide alternative text for images
-- Use semantic HTML elements
-
-## Content Management
-
-### Static Content
-- Portfolio projects in `src/lib/data/projects.ts`
-- Team members in `src/lib/data/team.ts`
-- Blog articles in `src/lib/data/insights.ts`
-- Testimonials in `src/lib/data/testimonials.ts`
-
-### Dynamic Content
-- Contact form submissions stored in Firebase
-- User authentication through Firebase Auth
-- Monitoring data collected through custom middleware
-
-## Troubleshooting Common Issues
-
-### Hydration Errors
-Use the mounted state pattern to prevent SSR/client mismatches:
 ```typescript
+// 1. Dynamic imports for heavy components
+const HeavyComponent = dynamic(() => import('./HeavyComponent'), {
+  loading: () => <SectionLoading />,
+  ssr: false
+});
+
+// 2. Image optimization
+<Image src="/image.jpg" width={800} height={600} priority sizes="..." />
+
+// 3. Memoization
+const value = useMemo(() => expensiveCalculation(data), [data]);
+
+// 4. Debounced API calls
+const debouncedSearch = useCallback(debounce(searchFn, 300), []);
+```plaintext
+
+## 🐛 Troubleshooting
+
+### Common Issues & Solutions
+
+#### Hydration Errors
+
+```typescript
+// Problem: React hydration mismatch
+// Solution: Use mounted state
 const [mounted, setMounted] = useState(false);
 useEffect(() => setMounted(true), []);
 if (!mounted) return null;
-```
+```plaintext
 
-### Animation Issues
-Use dynamic imports for components with complex animations:
+#### Animation Issues
+
 ```typescript
-const AnimatedComponent = dynamic(() => import('./Component'), { ssr: false });
-```
+// Problem: Framer Motion SSR conflicts
+// Solution: Dynamic import with SSR disabled
+const Component = dynamic(() => import('./Component'), { ssr: false });
+```plaintext
 
-### Build Failures
-1. Check TypeScript errors: `npx tsc --noEmit`
-2. Run linting: `npm run lint`
-3. Clear cache: `rm -rf .next`
-4. Reinstall dependencies if needed
+#### Build Failures
 
-### AI Service Issues
-1. Verify environment variables are set
-2. Check API key validity and quotas
-3. Implement proper error handling and fallbacks
-4. Monitor service status and response times
+```bash
+# Problem: Build not working
+# Solution: Clean rebuild
+rm -rf .next node_modules package-lock.json
+npm install
+npm run build
+
+# Check for TypeScript errors
+npx tsc --noEmit
+
+# Check linting
+npm run lint
+```plaintext
+
+#### API Route Errors
+
+```typescript
+// Add comprehensive error logging
+export async function POST(req: NextRequest) {
+  try {
+    console.log('Request:', { method: req.method, url: req.url });
+    // API logic
+  } catch (error) {
+    console.error('Detailed error:', { message: error.message, stack: error.stack });
+    return NextResponse.json({ error: 'Server error' }, { status: 500 });
+  }
+}
+```plaintext
+
+## 📋 Pre-Deployment Checklist
+
+### Build & Test
+
+- [ ] `npm run build` passes without errors
+- [ ] `npm run lint` shows no issues
+- [ ] TypeScript check: `npx tsc --noEmit`
+- [ ] All environment variables configured
+- [ ] Production server starts: `npm start`
+
+### Functionality
+
+- [ ] Homepage loads correctly
+- [ ] Navigation works on all devices
+- [ ] Contact form submits successfully
+- [ ] AI chat features operational
+- [ ] Image generation works
+- [ ] Voice recorder functions
+- [ ] Portfolio/blog pages display
+
+### Performance & Security
+
+- [ ] Mobile responsiveness verified
+- [ ] Core Web Vitals acceptable
+- [ ] SEO metadata present
+- [ ] Security headers active
+- [ ] API rate limiting working
+- [ ] No sensitive data exposed
+
+## 🎨 Terminal Text Patterns
+
+### Standard Terminal Formatting
+
+```typescript
+// Section headers
+<h2 className="text-primary-red font-mono uppercase tracking-wider">
+  &gt; SECTION_TITLE
+</h2>
+
+// Terminal prompts
+<p className="font-mono text-primary-white">
+  &gt; Command or content here
+</p>
+
+// Highlighted content
+<div className="border-l-2 border-primary-yellow pl-4">
+  <p className="text-primary-white font-mono">Important information</p>
+</div>
+
+// Status messages
+<div className="text-primary-yellow font-mono">&gt; Loading...</div>
+<div className="text-primary-green font-mono">&gt; Success!</div>
+<div className="text-primary-red font-mono">&gt; Error occurred</div>
+```plaintext
+
+## 📁 File Structure Reference
+
+```plaintext
+src/
+├── app/                          # Next.js 14 App Router
+│   ├── layout.tsx                # Root layout with fonts & metadata
+│   ├── page.tsx                  # Homepage with dynamic imports
+│   ├── api/                      # AI service API routes
+│   ├── services/                 # Service pages
+│   ├── work/                     # Portfolio pages
+│   ├── insights/                 # Blog pages
+│   └── contact/                  # Contact page
+├── components/                   # 25+ reusable React components
+│   ├── WindowFrame.tsx           # Terminal-style container wrapper
+│   ├── Navigation.tsx            # Main navigation
+│   ├── Footer.tsx                # Site footer
+│   └── ...                       # Additional components
+├── lib/                          # Utilities and configurations
+│   ├── data/                     # Static content
+│   ├── contexts/                 # React context providers
+│   ├── hooks/                    # Custom React hooks
+│   ├── utils/                    # Helper functions
+│   └── services/                 # External service integrations
+├── middleware.ts                 # Security & monitoring
+└── hooks/                        # Additional custom hooks
+
+Configuration:
+├── next.config.js                # Next.js configuration
+├── tailwind.config.js            # Custom design system
+├── tsconfig.json                 # TypeScript configuration
+└── server.js                     # Production server with security
+```plaintext
 
 ---
 
-## Important Reminders for Claude Code
+## Important Reminders
 
 1. **Maintain Aesthetic Consistency**: Always use the terminal/cyberpunk theme with appropriate colors, typography, and styling patterns.
 
@@ -419,6 +684,4 @@ const AnimatedComponent = dynamic(() => import('./Component'), { ssr: false });
 
 7. **AI Integration**: Test all AI services thoroughly and implement proper fallback mechanisms.
 
-8. **Documentation**: Update relevant documentation when making significant changes to architecture or patterns.
-
-This platform represents a modern, secure, and performant digital agency website with cutting-edge AI integrations while maintaining a distinctive visual identity.
+This platform represents a modern, secure, and performant digital agency website with cutting-edge AI integrations while maintaining a distinctive cyberpunk/terminal visual identity.
